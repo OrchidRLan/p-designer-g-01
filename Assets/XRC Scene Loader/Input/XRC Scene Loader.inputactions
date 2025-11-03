@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "XRC Scene Loader",
+    "maps": [
+        {
+            "name": "XRC Scene Loader",
+            "id": "15a4f15d-2803-4fbf-9382-478d3c38a4bf",
+            "actions": [
+                {
+                    "name": "Toggle UI",
+                    "type": "Button",
+                    "id": "6844c49d-9d9e-4f90-a8ce-a966508901ed",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "18397873-69ad-4028-a294-8ac5e2b26336",
+                    "path": "<XRController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle UI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
