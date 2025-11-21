@@ -14,10 +14,10 @@ public class GrabMoveCalculationsScaling
     }
     
     public Vector3 CalculateScaleOffset(Vector3 pivot, Vector3 targetPos, float newScale,
-        float previousScale)
+        float prevScale)
     {
         Vector3 prevDirection = targetPos - pivot;
-        float scaleRatio = newScale / previousScale;
+        float scaleRatio = newScale / prevScale;
         Vector3 scaleDirection = prevDirection * scaleRatio;
         Vector3 newPosition = pivot + scaleDirection;
         Vector3 offset = newPosition - targetPos;
