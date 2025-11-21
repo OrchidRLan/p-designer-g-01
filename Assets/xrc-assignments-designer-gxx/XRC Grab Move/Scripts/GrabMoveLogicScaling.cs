@@ -15,14 +15,22 @@ public class GrabMoveLogicScaling
    private float currentScale = 1.0f;
    private float minScale = 0.01f;
    private float maxScale = 10.0f;
+   private float prevScaleValue;
    public void UpdateScaling(Vector3 leftPos, Vector3 rightPos)
    {
       Vector3 pivot = moveCalculations.CalculatePivotPosition(leftPos, rightPos);
-      float newScale = scalingCalculations.CalculateProportionalScale(Vector3 leftPos, Vector3 rightPos, Vector3 prevLeftPos,
-         Vector3 prevRightPos, float currentScale, float minScale, float maxScale);
-      Vector3 offset = scalingCalculations.CalculateScaleOffset(Vector3 pivot, Vector3 targetPos, float newScale,
-         float prevScale);
+      float newScale = scalingCalculations.CalculateProportionalScale(leftPos,rightPos, prevLeftPos, prevRightPos, currentScale, minScale, maxScale);
+      Vector3 offset = scalingCalculations.CalculateScaleOffset(pivot, playerTransform.position, newScale,currentScale);
+      playerTransform.localScale = Vector3.one * newScale;
+      playerTransform.position += offset;
+      
+      prevScaleValue = currentScale;
+      currentScale = newScale;
+      
+      prevLeftPos = leftPos;
+      prevRightPos = rightPos;
    }
+   
    public float ClampScale(float min, float max)
    {
       currentScale = Mathf.Clamp(currentScale, min, max);
@@ -31,7 +39,9 @@ public class GrabMoveLogicScaling
 
    public void UpdatePlayerPositionAfterScale(Vector3 pivotposition)
    {
-      
+      Vector3 offset = scalingCalculations.CalculateScaleOffset(pivotposition,
+         playerTransform.position, currentScale, prevScaleValue);
+      playerTransform.position += offset;
    }
     
 }
