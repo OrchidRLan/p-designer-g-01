@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6250781624954666703, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Grab Move
+      value: G-01 \nXRC Grab Move
       objectReference: {fileID: 0}
     - target: {fileID: 6250781624954666703, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
