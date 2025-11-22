@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "XRC Create Input Actions",
+    "maps": [
+        {
+            "name": "Duplicate",
+            "id": "3c0bb45c-81d0-4c30-bc98-a46d0c27c47b",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "a458a34e-9460-43bb-84ba-1263856fe450",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1dba7b3d-f28f-4a6a-866f-b6787998682e",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
