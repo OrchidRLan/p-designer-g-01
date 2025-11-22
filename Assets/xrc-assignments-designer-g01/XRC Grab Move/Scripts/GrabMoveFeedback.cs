@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using TMPro;
 
-public class GrabMoveFeedback: MonoBehaviour
+public class GrabMoveFeedback : MonoBehaviour
 {
     [SerializeField] private GameObject pivotPrefab;
     [SerializeField] private GameObject linePrefab;
@@ -14,6 +14,7 @@ public class GrabMoveFeedback: MonoBehaviour
     
     private LineRenderer lineRenderer;
     private TextMeshProUGUI textComponent;
+    
     public void InitializeFeedbackInstances()
     {
         pivotInstance = Instantiate(pivotPrefab);
@@ -25,7 +26,7 @@ public class GrabMoveFeedback: MonoBehaviour
         textInstance.transform.parent = playerTransform;
         
         lineRenderer = lineInstance.GetComponent<LineRenderer>();
-        textComponent = textInstance.GetComponent<TextMeshProUGUI>();
+        textComponent = textInstance.GetComponentInChildren<TextMeshProUGUI>();
         
         SetFeedbackActive(false);
     }
@@ -45,22 +46,16 @@ public class GrabMoveFeedback: MonoBehaviour
             lineRenderer.SetPosition(0, leftPos);
             lineRenderer.SetPosition(1, rightPos);
         }
-        
     }
 
     public void UpdateScaleText(float worldScalePercent)
     {
-        Canvas canvas = textInstance.GetComponent<Canvas>();
-        if (canvas != null)
-        {
-            canvas.renderMode = RenderMode.WorldSpace;
-        }
-        
-        if (textComponent != null)
+        if (textInstance != null && textComponent != null)
         {
             textComponent.text = worldScalePercent.ToString("F0") + "%";
             textInstance.transform.position = pivotInstance.transform.position + Vector3.up * 0.2f;
-            textInstance.transform.rotation = Camera.main.transform.rotation;
+            textInstance.transform.LookAt(Camera.main.transform);
+            textInstance.transform.Rotate(0, 180, 0);
         }
     }
 
@@ -73,6 +68,4 @@ public class GrabMoveFeedback: MonoBehaviour
         if (textInstance != null)
             textInstance.SetActive(isActive);
     }
-    
-    
 }
