@@ -4,7 +4,6 @@ public class GrabMoveLogicScaling
 {
    private Transform playerTransform;
    private GrabMoveCalculationsScaling scalingCalculations;
-   private GrabMoveCalculationsCoreMovement moveCalculations;
 
    private bool isActive = false;
 
@@ -18,7 +17,7 @@ public class GrabMoveLogicScaling
    private float prevScaleValue;
    public void UpdateScaling(Vector3 leftPos, Vector3 rightPos)
    {
-      Vector3 pivot = moveCalculations.CalculatePivotPosition(leftPos, rightPos);
+      Vector3 pivot = GrabMoveCalculationsCoreMovement.CalculatePivotPosition(leftPos, rightPos);
       float newScale = scalingCalculations.CalculateProportionalScale(leftPos,rightPos, prevLeftPos, prevRightPos, currentScale, minScale, maxScale);
       Vector3 offset = scalingCalculations.CalculateScaleOffset(pivot, playerTransform.position, newScale,currentScale);
       playerTransform.localScale = Vector3.one * newScale;
