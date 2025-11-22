@@ -9,7 +9,7 @@ public class GrabMoveInput : MonoBehaviour
 
     [SerializeField]
     private InputActionProperty rightGrab;
-
+    private GrabMoveLogicScaling scalingLogic;
     private GrabMoveLogicCoreMovement grabMoveLogic;
 
     private void Awake()
@@ -72,6 +72,25 @@ public class GrabMoveInput : MonoBehaviour
             {
                 grabMoveLogic.End();
             }
+        }
+        if (scalingLogic != null)
+        {
+            scalingLogic.Begin(leftControllerPosition, rightControllerPosition);
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(leftControllerPosition, 0.05f);
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(rightControllerPosition, 0.05f);
+
+        
+        if (isActive)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(leftControllerPosition, rightControllerPosition);
         }
     }
 }

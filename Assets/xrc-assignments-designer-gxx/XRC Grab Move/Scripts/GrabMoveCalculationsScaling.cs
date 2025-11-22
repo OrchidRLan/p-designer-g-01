@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrabMoveCalculationsScaling
+public class GrabMoveCalculationsScaling:MonoBehaviour
 {
     public float CalculateProportionalScale(Vector3 leftPos, Vector3 rightPos, Vector3 prevLeftPos,
         Vector3 prevRightPos, float currentScale, float minScale, float maxScale)
