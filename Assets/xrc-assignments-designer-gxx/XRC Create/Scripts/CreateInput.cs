@@ -1,16 +1,122 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class CreateInput : MonoBehaviour
+namespace XRC.Toolkit.Create
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [RequireComponent(typeof(CreateLogic))]
+    public class CreateInput : MonoBehaviour
     {
-        
-    }
+        [Header("input actions")]
+        [SerializeField]
+        private InputActionProperty m_CreateAction;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField]
+        private InputActionProperty m_DisableUniformScalingAction;
+
+        [Header("controller refs")]
+        [SerializeField]
+        private Transform m_LeftController;
+
+        [SerializeField]
+        private Transform m_RightController;
+
+        [SerializeField]
+        private Transform m_XROrigin;
+
+        private CreateLogic m_CreateLogic;
+        private bool m_IsCreating;
+
+        public InputActionProperty createAction
+        {
+            get => m_CreateAction;
+            set => m_CreateAction = value;
+        }
+
+        public InputActionProperty disableUniformScalingAction
+        {
+            get => m_DisableUniformScalingAction;
+            set => m_DisableUniformScalingAction = value;
+        }
+
+        private void Awake()
+        {
+            m_CreateLogic = GetComponent<CreateLogic>();
+        }
+
+        private void OnEnable()
+        {
+            m_CreateAction.action.Enable();
+            m_DisableUniformScalingAction.action.Enable();
+
+            m_CreateAction.action.started += OnCreateStarted;
+            m_CreateAction.action.canceled += OnCreateCanceled;
+
+            m_DisableUniformScalingAction.action.performed += OnDisableUniformScalingPerformed;
+            m_DisableUniformScalingAction.action.canceled += OnDisableUniformScalingCanceled;
+        }
+
+        private void OnDisable()
+        {
+            m_CreateAction.action.started -= OnCreateStarted;
+            m_CreateAction.action.canceled -= OnCreateCanceled;
+
+            m_DisableUniformScalingAction.action.performed -= OnDisableUniformScalingPerformed;
+            m_DisableUniformScalingAction.action.canceled -= OnDisableUniformScalingCanceled;
+
+            m_CreateAction.action.Disable();
+            m_DisableUniformScalingAction.action.Disable();
+        }
+
+        private void Update()
+        {
+            if (!m_IsCreating)
+            {
+                return;
+            }
+
+            if (m_LeftController == null || m_RightController == null)
+            {
+                return;
+            }
+
+            m_CreateLogic.UpdatePreviewTransform(
+                m_LeftController.position,
+                m_RightController.position,
+                m_XROrigin);
+        }
+
+        //create pressed
+        private void OnCreateStarted(InputAction.CallbackContext ctx)
+        {
+            m_IsCreating = true;
+
+            //make preview appear right away
+            if (m_LeftController != null && m_RightController != null)
+            {
+                m_CreateLogic.UpdatePreviewTransform(
+                    m_LeftController.position,
+                    m_RightController.position,
+                    m_XROrigin);
+            }
+        }
+
+        //create released
+        private void OnCreateCanceled(InputAction.CallbackContext ctx)
+        {
+            m_IsCreating = false;
+            m_CreateLogic.FinalizeCreateFromPreview();
+        }
+
+        //modifier pressed leads to non-uniform
+        private void OnDisableUniformScalingPerformed(InputAction.CallbackContext ctx)
+        {
+            m_CreateLogic.useUniformScaling = false;
+        }
+
+        //modifier released leads to back to uniform
+        private void OnDisableUniformScalingCanceled(InputAction.CallbackContext ctx)
+        {
+            m_CreateLogic.useUniformScaling = true;
+        }
     }
 }
