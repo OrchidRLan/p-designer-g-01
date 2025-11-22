@@ -152,6 +152,112 @@ Transform:
   - {fileID: 1353694375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1091797862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1091797866}
+  - component: {fileID: 1091797865}
+  - component: {fileID: 1091797864}
+  - component: {fileID: 1091797863}
+  m_Layer: 0
+  m_Name: Sphere Select
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1091797863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091797862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c11561f76f8df428e111b7bac24f46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectFeedback
+  logic: {fileID: 1091797864}
+  sphereMaterial: {fileID: 0}
+  normalColor: {r: 0, g: 1, b: 1, a: 0.2}
+  hoverColor: {r: 1, g: 0, b: 0, a: 0.3}
+--- !u!114 &1091797864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091797862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8157cbb25fa234396e7b3c9c35f416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectLogic
+  interactor: {fileID: 1696774259621593043}
+  defaultCenter: {fileID: 1696774259621593042}
+  minRadius: 0.01
+  maxRadius: 0.3
+  defaultRadius: 0.04
+  grabAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 0382f96f-305d-44d9-8c71-44c327dd8b1e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  tintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &1091797865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091797862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7535f7c364d63da43b33d5baa7829c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectInput
+  logic: {fileID: 1091797864}
+  inputSensitivity: 1
+  changeRadius:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Change Radius
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 7864e285-3381-4d05-bcd5-416badf63e79
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+--- !u!4 &1091797866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091797862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1093642947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -383,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 7696548426158909433}
     - target: {fileID: 2186746268131323651, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Sphere Select
+      value: G-01 \nXRC Sphere Select
       objectReference: {fileID: 0}
     - target: {fileID: 2186746268131323651, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
@@ -427,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d41f4d2e81e70ec458d3a8298b4a3061, type: 2}
     - target: {fileID: 6242966537030822257, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Sphere Select
+      value: G-01 \nXRC Sphere Select
       objectReference: {fileID: 0}
     - target: {fileID: 6242966537030822257, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
@@ -443,7 +549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6250781624954666703, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Sphere Select
+      value: G-01 \nXRC Sphere Select
       objectReference: {fileID: 0}
     - target: {fileID: 6250781624954666703, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
@@ -467,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6324087031064658796, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Sphere Select
+      value: G-01 \nXRC Sphere Select
       objectReference: {fileID: 0}
     - target: {fileID: 6324087031064658796, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
@@ -635,6 +741,22 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1424053770}
   m_SourcePrefab: {fileID: 100100000, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+--- !u!4 &1696774259621593042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8801339434644633952, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+  m_PrefabInstance: {fileID: 1696774259621593041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1696774259621593043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5870674766596095256, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+  m_PrefabInstance: {fileID: 1696774259621593041}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7696548426158909433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 769457754982344502, guid: 9854c6854e2c66f44a31102914428393, type: 3}
@@ -647,3 +769,4 @@ SceneRoots:
   - {fileID: 1856821918}
   - {fileID: 1696774259621593041}
   - {fileID: 205172070}
+  - {fileID: 1091797866}
