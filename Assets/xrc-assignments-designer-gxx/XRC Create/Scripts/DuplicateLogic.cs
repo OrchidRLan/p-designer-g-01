@@ -22,11 +22,17 @@ public class DuplicateLogic : MonoBehaviour
 
     private void OnEnable()
     {
-        if (input) input.OnDuplicate += TryDuplicate;
+        if (input) {
+            input.OnDuplicate += TryDuplicate;
+            input.OnDelete    += TryDelete;   
+        }
     }
     private void OnDisable()
     {
-        if (input) input.OnDuplicate -= TryDuplicate;
+        if (input) {
+            input.OnDuplicate -= TryDuplicate;
+            input.OnDelete    -= TryDelete;   
+        }
     }
     private void TryDuplicate()
     {
@@ -34,6 +40,28 @@ public class DuplicateLogic : MonoBehaviour
         if (originals.Count == 0) return; 
 
         StartCoroutine(DuplicateRoutine(originals));
+    }
+    private void TryDelete()
+    {
+        var targets = GatherSelected();
+        if (targets.Count == 0) return;
+
+        foreach (var it in selectionInteractors.Where(i => i != null))
+        {
+            var ctrl = it as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInputInteractor;
+            
+            if (ctrl != null && ctrl.xrController != null)
+                ctrl.xrController.SendHapticImpulse(0.6f, 0.06f);
+        }
+
+        foreach (var sel in targets)
+        {
+            foreach (var inter in sel.interactorsSelecting.ToList())
+                interactionManager.SelectExit(inter, sel);
+
+            var go = (sel as Component)?.gameObject;
+            if (go) UnityEngine.Object.Destroy(go);
+        }
     }
     private List<UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable> GatherSelected()
     {

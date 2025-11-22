@@ -4,27 +4,40 @@ using UnityEngine.InputSystem;
 
 public class DuplicateInput : MonoBehaviour
 {
-    [Header("Input")]
-    public InputActionProperty duplicateAction;
-
-    public event Action OnDuplicate; 
+    [Header("Input")] public InputActionProperty duplicateAction;
+    public InputActionProperty deleteAction;
+    public event Action OnDuplicate;
+    public event Action OnDelete;
 
     private void OnEnable()
     {
-        if (duplicateAction.action == null) return;
-        duplicateAction.action.performed += HandlePerformed;
-        duplicateAction.action.Enable();
+        if (duplicateAction.action != null)
+        {
+            duplicateAction.action.performed += HandleDuplicate;
+            duplicateAction.action.Enable();
+        }
+
+        if (deleteAction.action != null)
+        {
+            deleteAction.action.performed += HandleDelete;
+            deleteAction.action.Enable();
+        }
     }
 
     private void OnDisable()
     {
-        if (duplicateAction.action == null) return;
-        duplicateAction.action.performed -= HandlePerformed;
-        duplicateAction.action.Disable();
-    }
+        if (duplicateAction.action != null)
+        {
+            duplicateAction.action.performed -= HandleDuplicate;
+            duplicateAction.action.Disable();
+        }
 
-    private void HandlePerformed(InputAction.CallbackContext _)
-    {
-        OnDuplicate?.Invoke();
+        if (deleteAction.action != null)
+        {
+            deleteAction.action.performed -= HandleDelete;
+            deleteAction.action.Disable();
+        }
     }
+    void HandleDuplicate(InputAction.CallbackContext _) => OnDuplicate?.Invoke();
+    void HandleDelete(InputAction.CallbackContext _)    => OnDelete?.Invoke();
 }
