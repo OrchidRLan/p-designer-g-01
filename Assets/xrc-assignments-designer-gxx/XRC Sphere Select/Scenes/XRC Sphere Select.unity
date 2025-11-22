@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SphereSelectFeedback
   logic: {fileID: 1091797864}
-  sphereMaterial: {fileID: 0}
-  normalColor: {r: 0, g: 1, b: 1, a: 0.2}
+  sphereMaterial: {fileID: 2100000, guid: e9124e8fd249c9340ae86d1cddd590ea, type: 2}
+  normalColor: {r: 0.58933574, g: 0.59119487, b: 0.59119487, a: 0.2}
   hoverColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!114 &1091797864
 MonoBehaviour:
@@ -215,7 +215,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -1855038590553741606, guid: 971e18a7470d71048b8bfb544f6e27b9, type: 3}
   tintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &1091797865
 MonoBehaviour:
