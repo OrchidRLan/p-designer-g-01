@@ -18,7 +18,7 @@ public class GrabMoveFeedback : MonoBehaviour
 
     
     [Header("Settings")]
-    [SerializeField] private float textOffsetY = 0.2f;
+    [SerializeField] private float textOffsetY = 0.1f;
     [SerializeField] private float fixedPivotSize = 0.1f;
     [SerializeField] private float fixedTextScale = 0.01f;
     
