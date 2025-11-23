@@ -1,6 +1,55 @@
 {
-    "version": 0,
+    "version": 1,
     "name": "XRC Create Input Actions",
-    "maps": [],
+    "maps": [
+        {
+            "name": "XRC Create",
+            "id": "25bb6a2c-44fe-416d-a1a4-4f2879628867",
+            "actions": [
+                {
+                    "name": "DisableUniformScaling",
+                    "type": "Button",
+                    "id": "d7002144-1506-4f3a-9449-a9702bed9ea8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Create",
+                    "type": "Button",
+                    "id": "1e9921ab-67e6-46d3-abff-4ba4206656ec",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b54484c1-3bc4-4983-837b-3a0e817d5136",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DisableUniformScaling",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8d913d8-7ac4-402a-89b2-c0ad053f5092",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Create",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
     "controlSchemes": []
 }

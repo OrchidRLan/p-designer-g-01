@@ -152,6 +152,113 @@ Transform:
   - {fileID: 1353694375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &564329859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 564329863}
+  - component: {fileID: 564329862}
+  - component: {fileID: 564329861}
+  - component: {fileID: 564329860}
+  m_Layer: 0
+  m_Name: XRC Create Tool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &564329860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564329859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f963928bf634fb6bb4ac4febae1cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CreateFeedback
+--- !u!114 &564329861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564329859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db3b525d948a4d72b06f2ba7fdaee67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XRC.Toolkit.Create.CreateInput
+  m_CreateAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Create
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 9ad34765-0459-47d7-b402-1067b549edae
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -20021058351376587, guid: 990cb7f6e81794608a70f6143a6cfe02, type: 3}
+  m_DisableUniformScalingAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Disable Uniform Scaling
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: af9707c6-ffef-4f84-806e-bc3c9505df60
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -7092949069756308301, guid: 990cb7f6e81794608a70f6143a6cfe02, type: 3}
+  m_LeftController: {fileID: 1680131210}
+  m_RightController: {fileID: 938107835}
+  m_XROrigin: {fileID: 7696548426158909433}
+--- !u!114 &564329862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564329859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a87dcfc2d8d4d2db791d0e5529d1f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XRC.Toolkit.Create.CreateLogic
+  m_PrimitiveType: 3
+  m_MinScale: 0.05
+  m_MaxScale: 2
+  m_ObjectMaterial: {fileID: 2100000, guid: 24b2466c54aab4d61a66097343d43a65, type: 2}
+  m_PreviewMaterial: {fileID: 2100000, guid: 2b7c59a4224e84825ac570dc4e369f94, type: 2}
+--- !u!4 &564329863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564329859}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &938107835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8514629115984528261, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+  m_PrefabInstance: {fileID: 1696774259621593041}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1093642947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -369,6 +476,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1680131210 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3753629899501946830, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+  m_PrefabInstance: {fileID: 1696774259621593041}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1856821918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -383,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 7696548426158909433}
     - target: {fileID: 2186746268131323651, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Create
+      value: G-01 \nXRC Create
       objectReference: {fileID: 0}
     - target: {fileID: 2186746268131323651, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
@@ -427,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d41f4d2e81e70ec458d3a8298b4a3061, type: 2}
     - target: {fileID: 6242966537030822257, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Create
+      value: G-01 \nXRC Create
       objectReference: {fileID: 0}
     - target: {fileID: 6242966537030822257, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
@@ -443,7 +555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6250781624954666703, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Create
+      value: G-01 \nXRC Create
       objectReference: {fileID: 0}
     - target: {fileID: 6250781624954666703, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
@@ -467,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6324087031064658796, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_text
-      value: G-xx \nXRC Create
+      value: G-01 \nXRC Create
       objectReference: {fileID: 0}
     - target: {fileID: 6324087031064658796, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_fontSize
@@ -647,3 +759,4 @@ SceneRoots:
   - {fileID: 1856821918}
   - {fileID: 1696774259621593041}
   - {fileID: 205172070}
+  - {fileID: 564329863}
