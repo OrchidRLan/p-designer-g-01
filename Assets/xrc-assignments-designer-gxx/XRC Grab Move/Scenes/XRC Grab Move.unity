@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &153205570 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6884229230216068927, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+  m_PrefabInstance: {fileID: 1856821918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &205172069
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +526,7 @@ MonoBehaviour:
   leftController: {fileID: 1696774259621593043}
   rightController: {fileID: 1696774259621593042}
   feedback: {fileID: 1842343034}
+  enableScaling: 1
   currentScale: 1
   minScale: 0.01
   maxScale: 10
@@ -537,14 +543,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogicCoreMovement
   player: {fileID: 7696548426158909433}
-  leftTr: {fileID: 1696774259621593043}
-  rightTr: {fileID: 1696774259621593042}
-  attachedObjs: []
-  minScale: 0.001
-  maxScale: 10
-  enableTrans: 1
-  enableRot: 1
-  yawOnly: 0
+  leftTransform: {fileID: 1696774259621593043}
+  rightTransform: {fileID: 1696774259621593042}
+  attachedObjects:
+  - {fileID: 153205570}
+  enableTranslation: 1
+  enableRotation: 1
+  RestrictRotationToYaw: 0
 --- !u!114 &1842343033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,18 +568,10 @@ MonoBehaviour:
       m_Name: Left Grab
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 6e7b3701-b5f5-4476-9456-9bdb766071ff
+      m_Id: 31b3e589-9313-4a75-a497-a47b2134d02e
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 2ba45513-003a-4a60-8676-2a0a7ebb2057
-        m_Path: 
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Left Grab
-        m_Flags: 0
+      m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -4194551054928061662, guid: b6d91389792b144439ac3cb712c59f7c, type: 3}
   rightGrab:
@@ -583,13 +580,13 @@ MonoBehaviour:
       m_Name: Right Grab
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 3f35b735-d78f-4958-b03c-7291ce38e32e
+      m_Id: be9eb2d1-0982-4ea3-bf5d-29d23639d1de
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -2718927981735460482, guid: b6d91389792b144439ac3cb712c59f7c, type: 3}
-  leftController: {fileID: 1696774259621593043}
+  leftController: {fileID: 205172070}
   rightController: {fileID: 1696774259621593042}
 --- !u!114 &1842343034
 MonoBehaviour:
@@ -607,7 +604,7 @@ MonoBehaviour:
   linePrefab: {fileID: 8063340464307893220, guid: e2c44ed401ffcf6459478dafcf4418ab, type: 3}
   textPrefab: {fileID: 6743804354428113940, guid: dfd85450cd9412c4cbde9f0a884dafdb, type: 3}
   playerTransform: {fileID: 7696548426158909433}
-  textOffsetY: 0.08
+  textOffsetY: 0.2
   fixedPivotSize: 0.1
   fixedTextScale: 0.01
 --- !u!1001 &1856821918

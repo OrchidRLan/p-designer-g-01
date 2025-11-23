@@ -6,17 +6,17 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
     [SerializeField] 
     private Transform player;
     [SerializeField] 
-    private Transform leftTr;
+    private Transform leftTransform;
     [SerializeField] 
-    private Transform rightTr;
+    private Transform rightTransform;
     [SerializeField] 
-    private List<Transform> attachedObjs = new List<Transform>();
+    private List<Transform> attachedObjects = new List<Transform>();
     [SerializeField] 
-    private bool enableTrans = true;
+    private bool enableTranslation = true;
     [SerializeField] 
-    private bool enableRot = true;
+    private bool enableRotation = true;
     [SerializeField] 
-    private bool yawOnly = false;
+    private bool RestrictRotationToYaw = false;
     
     private bool _isRunning;
     private Vector3 pivotPos;
@@ -34,16 +34,16 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
     private void Update()
     {
         if (!_isRunning) return;
-        if (player == null || leftTr == null || rightTr == null) return;
+        if (player == null || leftTransform == null || rightTransform == null) return;
 
-        Vector3 leftPos = leftTr.position;
-        Vector3 rightPos = rightTr.position;
-        Vector3 leftFwd = leftTr.forward;
-        Vector3 rightFwd = rightTr.forward;
+        Vector3 leftPos = leftTransform.position;
+        Vector3 rightPos = rightTransform.position;
+        Vector3 leftFwd = leftTransform.forward;
+        Vector3 rightFwd = rightTransform.forward;
 
         pivotPos = GrabMoveCalculationsCoreMovement.CalculatePivotPosition(leftPos, rightPos);
 
-        if (enableTrans)
+        if (enableTranslation)
         {
             Vector3 trans = GrabMoveCalculationsCoreMovement.CalculateTranslation(pivotPos, prevPivotPos);
             if (trans.sqrMagnitude > 0.000001f)
@@ -52,7 +52,7 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
             }
         }
 
-        if (enableRot)
+        if (enableRotation)
         {
             var (axisPos, anglePos) = GrabMoveCalculationsCoreMovement.CalculatePositionBasedRotation(
                 leftPos, rightPos, prevLeftPos, prevRightPos
@@ -69,7 +69,7 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
 
             combined.ToAngleAxis(out float combinedAngle, out Vector3 combinedAxis);
             
-            if (yawOnly)
+            if (RestrictRotationToYaw)
             {
                 var (yawAxis, yawAngle) = GrabMoveCalculationsCoreMovement.ProjectRotationToYaw(
                     combinedAxis, combinedAngle, player.up
@@ -82,10 +82,10 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
             }
         }
         
-        Vector3 newLeftPos = leftTr.position;
-        Vector3 newRightPos = rightTr.position;
-        Vector3 newLeftFwd = leftTr.forward;
-        Vector3 newRightFwd = rightTr.forward;
+        Vector3 newLeftPos = leftTransform.position;
+        Vector3 newRightPos = rightTransform.position;
+        Vector3 newLeftFwd = leftTransform.forward;
+        Vector3 newRightFwd = rightTransform.forward;
 
         Vector3 newPivot = GrabMoveCalculationsCoreMovement.CalculatePivotPosition(newLeftPos, newRightPos);
 
@@ -100,14 +100,14 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
 
     public void Begin()
     {
-        if (player == null || leftTr == null || rightTr == null) return;
+        if (player == null || leftTransform == null || rightTransform == null) return;
 
         _isRunning = true;
 
-        prevLeftPos = leftTr.position;
-        prevRightPos = rightTr.position;
-        prevLeftFwd = leftTr.forward;
-        prevRightFwd = rightTr.forward;
+        prevLeftPos = leftTransform.position;
+        prevRightPos = rightTransform.position;
+        prevLeftFwd = leftTransform.forward;
+        prevRightFwd = rightTransform.forward;
 
         pivotPos = GrabMoveCalculationsCoreMovement.CalculatePivotPosition(prevLeftPos, prevRightPos);
         prevPivotPos = pivotPos;
@@ -115,7 +115,7 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
         currScale = player.localScale.x;
 
         origParents.Clear();
-        foreach (Transform t in attachedObjs)
+        foreach (Transform t in attachedObjects)
         {
             if (t == null)
             {
@@ -135,9 +135,9 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
 
         _isRunning = false;
 
-        for (int i = 0; i < attachedObjs.Count && i < origParents.Count; i++)
+        for (int i = 0; i < attachedObjects.Count && i < origParents.Count; i++)
         {
-            Transform t = attachedObjs[i];
+            Transform t = attachedObjects[i];
             Transform origParent = origParents[i];
             if (t != null)
             {
@@ -153,7 +153,7 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
         if (axis.sqrMagnitude < 0.000001f) return;
         if (Mathf.Abs(angle) < 0.0001f) return;
 
-        Quaternion rotation = Quaternion.AngleAxis(angle, axis.normalized);
+        Quaternion rotation = Quaternion.AngleAxis(-angle, axis.normalized);
         Vector3 offset = player.position - pivotPos;
         offset = rotation * offset;
         
