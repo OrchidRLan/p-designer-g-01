@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6076608073541854175
 Transform:
   m_ObjectHideFlags: 0
@@ -85,13 +85,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.0767118
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.011062622
-        value: 0.07379532
+        time: 0.023605898
+        value: 0.07273102
         inSlope: 0
         outSlope: 0
         tangentMode: 0
