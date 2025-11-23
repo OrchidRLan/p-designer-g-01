@@ -12,12 +12,6 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
     [SerializeField] 
     private List<Transform> attachedObjs = new List<Transform>();
     [SerializeField] 
-    private float minScale = 0.0001f;
-    [SerializeField] 
-    private float maxScale = 10f;
-    // [SerializeField] 
-    // private bool enableScale = true;
-    [SerializeField] 
     private bool enableTrans = true;
     [SerializeField] 
     private bool enableRot = true;
@@ -74,7 +68,7 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
             Quaternion combined = rotDir * rotPos;
 
             combined.ToAngleAxis(out float combinedAngle, out Vector3 combinedAxis);
-
+            
             if (yawOnly)
             {
                 var (yawAxis, yawAngle) = GrabMoveCalculationsCoreMovement.ProjectRotationToYaw(
@@ -87,26 +81,7 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
                 ApplyRotation(combinedAxis, combinedAngle);
             }
         }
-
-        // if (enableScale)
-        // {
-        //     float newScale = GrabMoveCalculationsCoreMovement.CalculateProportionalScale(
-        //         leftPos, rightPos, prevLeftPos, prevRightPos,
-        //         currScale, minScale, maxScale
-        //     );
-        //
-        //     if (Mathf.Abs(newScale - currScale) > 0.0001f)
-        //     {
-        //         Vector3 offset = GrabMoveCalculationsCoreMovement.CalculateScaleOffset(
-        //             pivotPos, player.position, newScale, currScale
-        //         );
-        //
-        //         player.position = offset;
-        //         player.localScale = Vector3.one * newScale;
-        //         currScale = newScale;
-        //     }
-        // }
-
+        
         Vector3 newLeftPos = leftTr.position;
         Vector3 newRightPos = rightTr.position;
         Vector3 newLeftFwd = leftTr.forward;
