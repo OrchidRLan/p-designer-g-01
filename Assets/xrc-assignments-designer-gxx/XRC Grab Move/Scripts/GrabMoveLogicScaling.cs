@@ -14,6 +14,7 @@ public class GrabMoveLogicScaling : MonoBehaviour
     private Vector3 prevRightPos;
     
     [Header("Scale Settings")]
+    [SerializeField] bool enableScaling = true;
     [SerializeField] private float currentScale = 1.0f;
     [SerializeField] private float minScale = 0.01f;
     [SerializeField] private float maxScale = 10.0f;
@@ -23,6 +24,7 @@ public class GrabMoveLogicScaling : MonoBehaviour
     
     private void Update()
     {
+        if (!enableScaling) return;
         if (!isRunning) return;
         if (playerTransform == null || leftController == null || rightController == null)
             return;
@@ -65,6 +67,7 @@ public class GrabMoveLogicScaling : MonoBehaviour
     public void Begin()
     {
         Debug.Log("SCALING BEGIN CALLED"); 
+        if (!enableScaling) return;
         if (leftController == null || rightController == null)
         {
             Debug.LogWarning("GrabMoveLogicScaling: Controllers not assigned!");
@@ -99,7 +102,11 @@ public class GrabMoveLogicScaling : MonoBehaviour
     
     public float GetWorldScalePercent()
     {
-        return currentScale * 100f;
+        if (currentScale < 0.0001f)
+        {
+            return 0f;
+        } 
+        return (1f / currentScale) * 100f;
     }
     
     public float GetCurrentScale()
