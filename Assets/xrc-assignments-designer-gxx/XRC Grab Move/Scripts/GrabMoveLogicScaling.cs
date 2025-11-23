@@ -36,7 +36,12 @@ public class GrabMoveLogicScaling : MonoBehaviour
             leftPos, rightPos, prevLeftPos, prevRightPos, 
             currentScale, minScale, maxScale
         );
-        
+        if (Mathf.Abs(newScale - currentScale) < 0.001f)
+        {
+            prevLeftPos = leftPos;
+            prevRightPos = rightPos;
+            return;
+        }
         Vector3 offset = GrabMoveCalculationsScaling.CalculateScaleOffset(
             pivot, playerTransform.position, newScale, currentScale
         );
