@@ -15,8 +15,8 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
     private float minScale = 0.0001f;
     [SerializeField] 
     private float maxScale = 10f;
-    [SerializeField] 
-    private bool enableScale = true;
+    // [SerializeField] 
+    // private bool enableScale = true;
     [SerializeField] 
     private bool enableTrans = true;
     [SerializeField] 
@@ -88,24 +88,24 @@ public class GrabMoveLogicCoreMovement : MonoBehaviour
             }
         }
 
-        if (enableScale)
-        {
-            float newScale = GrabMoveCalculationsCoreMovement.CalculateProportionalScale(
-                leftPos, rightPos, prevLeftPos, prevRightPos,
-                currScale, minScale, maxScale
-            );
-
-            if (Mathf.Abs(newScale - currScale) > 0.0001f)
-            {
-                Vector3 offset = GrabMoveCalculationsCoreMovement.CalculateScaleOffset(
-                    pivotPos, player.position, newScale, currScale
-                );
-
-                player.position = offset;
-                player.localScale = Vector3.one * newScale;
-                currScale = newScale;
-            }
-        }
+        // if (enableScale)
+        // {
+        //     float newScale = GrabMoveCalculationsCoreMovement.CalculateProportionalScale(
+        //         leftPos, rightPos, prevLeftPos, prevRightPos,
+        //         currScale, minScale, maxScale
+        //     );
+        //
+        //     if (Mathf.Abs(newScale - currScale) > 0.0001f)
+        //     {
+        //         Vector3 offset = GrabMoveCalculationsCoreMovement.CalculateScaleOffset(
+        //             pivotPos, player.position, newScale, currScale
+        //         );
+        //
+        //         player.position = offset;
+        //         player.localScale = Vector3.one * newScale;
+        //         currScale = newScale;
+        //     }
+        // }
 
         Vector3 newLeftPos = leftTr.position;
         Vector3 newRightPos = rightTr.position;

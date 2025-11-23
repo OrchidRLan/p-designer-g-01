@@ -479,12 +479,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1842343030}
-  - component: {fileID: 1842343029}
-  - component: {fileID: 1842343028}
-  - component: {fileID: 1842343027}
-  - component: {fileID: 1842343026}
-  - component: {fileID: 1842343025}
-  - component: {fileID: 1842343024}
+  - component: {fileID: 1842343034}
+  - component: {fileID: 1842343033}
+  - component: {fileID: 1842343032}
+  - component: {fileID: 1842343031}
   m_Layer: 0
   m_Name: GrabMove
   m_TagString: Untagged
@@ -492,92 +490,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1842343024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842343023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457bc75916610a548a9cd02c1a4c7bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogicScaling
-  playerTransform: {fileID: 7696548426158909433}
-  scalingCalculations: {fileID: 1842343027}
-  moveCalculations: {fileID: 1842343029}
-  feedback: {fileID: 1842343028}
---- !u!114 &1842343025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842343023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89580cae47ed4a548a62499715982a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogicCoreMovement
-  playerTransform: {fileID: 7696548426158909433}
-  calculations: {fileID: 1842343029}
---- !u!114 &1842343026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842343023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce5e8cc9d7a57e14aa548a7d713fde24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveInput
-  leftControllerNode: 4
-  rightControllerNode: 5
-  activationButton: 3
-  requireBothButtons: 1
---- !u!114 &1842343027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842343023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94263431c1c5a094eb577620080cdf4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveCalculationsScaling
---- !u!114 &1842343028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842343023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce11f1731e94c0d811dd576474af45a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveFeedback
-  pivotPrefab: {fileID: 3010510326158471010, guid: 09c5295ec17c1dc41b1c28b08ef73980, type: 3}
-  linePrefab: {fileID: 8063340464307893220, guid: e2c44ed401ffcf6459478dafcf4418ab, type: 3}
-  textPrefab: {fileID: 230969056729171663, guid: 49b1f83a7a6c0434f9ed38281fd82095, type: 3}
-  playerTransform: {fileID: 7696548426158909433}
---- !u!114 &1842343029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842343023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0afb90c118b4bed98d7cb8155247bed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveCalculationsCoreMovement
 --- !u!4 &1842343030
 Transform:
   m_ObjectHideFlags: 0
@@ -593,6 +505,111 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1842343031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842343023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457bc75916610a548a9cd02c1a4c7bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogicScaling
+  playerTransform: {fileID: 7696548426158909433}
+  leftController: {fileID: 1696774259621593043}
+  rightController: {fileID: 1696774259621593042}
+  feedback: {fileID: 1842343034}
+  currentScale: 1
+  minScale: 0.01
+  maxScale: 10
+--- !u!114 &1842343032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842343023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f22aaea93fb8da4ab3e39b8f35b79cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogicCoreMovement
+  player: {fileID: 7696548426158909433}
+  leftTr: {fileID: 1696774259621593043}
+  rightTr: {fileID: 1696774259621593042}
+  attachedObjs: []
+  minScale: 0.001
+  maxScale: 10
+  enableTrans: 1
+  enableRot: 1
+  yawOnly: 0
+--- !u!114 &1842343033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842343023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057f1eb147e2e472cb54d8e158c8c5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveInput
+  leftGrab:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Grab
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 6e7b3701-b5f5-4476-9456-9bdb766071ff
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 2ba45513-003a-4a60-8676-2a0a7ebb2057
+        m_Path: 
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Grab
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: -4194551054928061662, guid: b6d91389792b144439ac3cb712c59f7c, type: 3}
+  rightGrab:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Grab
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3f35b735-d78f-4958-b03c-7291ce38e32e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -2718927981735460482, guid: b6d91389792b144439ac3cb712c59f7c, type: 3}
+  leftController: {fileID: 1696774259621593043}
+  rightController: {fileID: 1696774259621593042}
+--- !u!114 &1842343034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842343023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce11f1731e94c0d811dd576474af45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveFeedback
+  pivotPrefab: {fileID: 3010510326158471010, guid: 09c5295ec17c1dc41b1c28b08ef73980, type: 3}
+  linePrefab: {fileID: 8063340464307893220, guid: e2c44ed401ffcf6459478dafcf4418ab, type: 3}
+  textPrefab: {fileID: 6743804354428113940, guid: dfd85450cd9412c4cbde9f0a884dafdb, type: 3}
+  playerTransform: {fileID: 7696548426158909433}
+  textOffsetY: 0.08
+  fixedPivotSize: 0.1
+  fixedTextScale: 0.01
 --- !u!1001 &1856821918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -871,6 +888,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1424053770}
   m_SourcePrefab: {fileID: 100100000, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+--- !u!4 &1696774259621593042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8514629115984528261, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+  m_PrefabInstance: {fileID: 1696774259621593041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1696774259621593043 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3753629899501946830, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+  m_PrefabInstance: {fileID: 1696774259621593041}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7696548426158909433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 769457754982344502, guid: 9854c6854e2c66f44a31102914428393, type: 3}

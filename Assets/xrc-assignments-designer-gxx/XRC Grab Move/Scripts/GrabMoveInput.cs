@@ -4,17 +4,27 @@ using UnityEngine.InputSystem;
 
 public class GrabMoveInput : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] 
     private InputActionProperty leftGrab;
 
     [SerializeField]
     private InputActionProperty rightGrab;
+    
+    [SerializeField] private Transform leftController;
+    [SerializeField] private Transform rightController;
+    
     private GrabMoveLogicScaling scalingLogic;
     private GrabMoveLogicCoreMovement grabMoveLogic;
+    
+    private Vector3 leftControllerPosition;
+    private Vector3 rightControllerPosition;
+    
+    private bool isActive = false;
 
     private void Awake()
     {
         grabMoveLogic = GetComponent<GrabMoveLogicCoreMovement>();
+        scalingLogic = GetComponent<GrabMoveLogicScaling>();
     }
 
     private void OnEnable()
@@ -45,39 +55,40 @@ public class GrabMoveInput : MonoBehaviour
 
     private void Update()
     {
-        float leftValue = 0f; 
-        if (leftGrab.action != null)
-        {
-            leftValue = leftGrab.action.ReadValue<float>();
-        }
-        
-        float rightValue = 0f;
-        if (rightGrab.action != null)
-        {
-            rightValue = rightGrab.action.ReadValue<float>();
-        }
-        bool leftPressed = leftValue > 0.1f;
+        float leftValue  = leftGrab.action != null  ? leftGrab.action.ReadValue<float>()  : 0f;
+        float rightValue = rightGrab.action != null ? rightGrab.action.ReadValue<float>() : 0f;
+
+        bool leftPressed  = leftValue  > 0.1f;
         bool rightPressed = rightValue > 0.1f;
 
-        if (leftPressed && rightPressed)
+        bool bothPressed = leftPressed && rightPressed;
+
+        if (bothPressed)
         {
-            if (!grabMoveLogic.IsRunning)
+            if (grabMoveLogic != null && !grabMoveLogic.IsRunning)
             {
                 grabMoveLogic.Begin();
+            }
+            
+            if (scalingLogic != null && !scalingLogic.IsRunning)
+            {
+                scalingLogic.Begin();
             }
         }
         else
         {
-            if (grabMoveLogic.IsRunning)
+            if (grabMoveLogic != null && grabMoveLogic.IsRunning)
             {
                 grabMoveLogic.End();
             }
-        }
-        if (scalingLogic != null)
-        {
-            scalingLogic.Begin(leftControllerPosition, rightControllerPosition);
+
+            if (scalingLogic != null && scalingLogic.IsRunning)
+            {
+                scalingLogic.End();
+            }
         }
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
