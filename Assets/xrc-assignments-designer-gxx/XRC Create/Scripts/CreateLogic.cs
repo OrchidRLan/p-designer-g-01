@@ -53,6 +53,9 @@ namespace XRC.Toolkit.Create
 
         public bool isPreviewActive => m_IsPreviewActive;
 
+        //expose preview object for feedback
+        public GameObject previewObject => m_PreviewObject;
+
         //called while create input is held down
         public void UpdatePreviewTransform(Vector3 leftPos, Vector3 rightPos, Transform origin)
         {

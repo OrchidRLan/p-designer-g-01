@@ -24,6 +24,7 @@ namespace XRC.Toolkit.Create
         private Transform m_XROrigin;
 
         private CreateLogic m_CreateLogic;
+        private CreateFeedback m_CreateFeedback;
         private bool m_IsCreating;
 
         public InputActionProperty createAction
@@ -41,6 +42,7 @@ namespace XRC.Toolkit.Create
         private void Awake()
         {
             m_CreateLogic = GetComponent<CreateLogic>();
+            m_CreateFeedback = GetComponent<CreateFeedback>();
         }
 
         private void OnEnable()
@@ -98,22 +100,34 @@ namespace XRC.Toolkit.Create
                     m_RightController.position,
                     m_XROrigin);
             }
+
+            //apply preview feedback 
+            if (m_CreateFeedback != null)
+            {
+                m_CreateFeedback.OnPreviewEntered(m_CreateLogic.previewObject);
+            }
         }
 
         //create released
         private void OnCreateCanceled(InputAction.CallbackContext ctx)
         {
             m_IsCreating = false;
-            m_CreateLogic.FinalizeCreateFromPreview();
+
+            var finalObject = m_CreateLogic.FinalizeCreateFromPreview();
+
+            if (m_CreateFeedback != null)
+            {
+                m_CreateFeedback.OnPreviewExited(finalObject);
+            }
         }
 
-        //modifier pressed leads to non-uniform
+        //modifier pressed leads to non uniform
         private void OnDisableUniformScalingPerformed(InputAction.CallbackContext ctx)
         {
             m_CreateLogic.useUniformScaling = false;
         }
 
-        //modifier released leads to back to uniform
+        //modifier released leads back to uniform
         private void OnDisableUniformScalingCanceled(InputAction.CallbackContext ctx)
         {
             m_CreateLogic.useUniformScaling = true;
