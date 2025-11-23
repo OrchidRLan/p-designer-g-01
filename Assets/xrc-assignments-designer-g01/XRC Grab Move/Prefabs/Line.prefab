@@ -90,8 +90,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.023605898
-        value: 0.07273102
+        time: 0.08483179
+        value: 0.51037407
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -136,7 +136,7 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
+    shadowBias: 0.01
     generateLightingData: 0
   m_MaskInteraction: 0
   m_UseWorldSpace: 1

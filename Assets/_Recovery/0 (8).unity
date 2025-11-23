@@ -604,9 +604,10 @@ MonoBehaviour:
   linePrefab: {fileID: 8063340464307893220, guid: e2c44ed401ffcf6459478dafcf4418ab, type: 3}
   textPrefab: {fileID: 6743804354428113940, guid: dfd85450cd9412c4cbde9f0a884dafdb, type: 3}
   playerTransform: {fileID: 7696548426158909433}
-  textOffsetY: 0.2
-  fixedPivotSize: 0.1
+  textOffsetY: 0.1
+  fixedPivotSize: 0.01
   fixedTextScale: 0.01
+  fixedLineWidth: 0.1
 --- !u!1001 &1856821918
 PrefabInstance:
   m_ObjectHideFlags: 0

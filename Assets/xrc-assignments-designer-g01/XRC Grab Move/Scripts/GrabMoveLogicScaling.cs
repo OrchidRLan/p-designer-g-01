@@ -38,12 +38,14 @@ public class GrabMoveLogicScaling : MonoBehaviour
             leftPos, rightPos, prevLeftPos, prevRightPos, 
             currentScale, minScale, maxScale
         );
+        
         if (Mathf.Abs(newScale - currentScale) < 0.001f)
         {
             prevLeftPos = leftPos;
             prevRightPos = rightPos;
             return;
         }
+        
         Vector3 offset = GrabMoveCalculationsScaling.CalculateScaleOffset(
             pivot, playerTransform.position, newScale, currentScale
         );
@@ -66,11 +68,9 @@ public class GrabMoveLogicScaling : MonoBehaviour
     
     public void Begin()
     {
-        Debug.Log("SCALING BEGIN CALLED"); 
         if (!enableScaling) return;
         if (leftController == null || rightController == null)
         {
-            Debug.LogWarning("GrabMoveLogicScaling: Controllers not assigned!");
             return;
         }
         
@@ -85,8 +85,6 @@ public class GrabMoveLogicScaling : MonoBehaviour
             feedback.InitializeFeedbackInstances();
             feedback.SetFeedbackActive(true);
         }
-        
-        Debug.Log("Scaling BEGIN");
     }
     
     public void End()
@@ -96,8 +94,6 @@ public class GrabMoveLogicScaling : MonoBehaviour
         {
             feedback.SetFeedbackActive(false);
         }
-        
-        Debug.Log("Scaling END");
     }
     
     public float GetWorldScalePercent()
