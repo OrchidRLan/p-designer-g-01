@@ -152,6 +152,310 @@ Transform:
   - {fileID: 1353694375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &648169571
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 436159923883185764, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 648169572}
+    - target: {fileID: 436159923883185764, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneByName
+      objectReference: {fileID: 0}
+    - target: {fileID: 436159923883185764, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Projects.Designer.SceneLoader.SceneLoaderLogic, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 436159923883185764, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: XRC Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 598909812123746429, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 598909812123746429, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 598909812123746429, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 598909812123746429, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 598909812123746429, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5387
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.53871
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180359813691545912, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 648169572}
+    - target: {fileID: 2180359813691545912, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneByName
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180359813691545912, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Projects.Designer.SceneLoader.SceneLoaderLogic, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180359813691545912, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: XRC Sphere Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824600235309180050, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_text
+      value: Designer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824600235309180050, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824600235309180050, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824600235309180050, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3041204204109615145, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595756930707039740, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_Name
+      value: XRC Create Scene Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691489093874227329, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691489093874227329, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691489093874227329, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691489093874227329, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691489093874227329, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863029016996987165, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 648169572}
+    - target: {fileID: 4863029016996987165, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneByName
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863029016996987165, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Projects.Designer.SceneLoader.SceneLoaderLogic, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863029016996987165, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: XRC Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959367022836803880, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959367022836803880, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959367022836803880, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959367022836803880, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959367022836803880, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182275169847554422, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182275169847554422, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182275169847554422, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182275169847554422, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182275169847554422, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536017728372189996, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536017728372189996, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536017728372189996, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536017728372189996, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536017728372189996, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608156333096575853, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608156333096575853, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608156333096575853, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608156333096575853, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608156333096575853, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410913972973100722, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 648169572}
+    - target: {fileID: 6410913972973100722, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneByName
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410913972973100722, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Projects.Designer.SceneLoader.SceneLoaderLogic, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410913972973100722, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: XRC Scale
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276867727706082202, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276867727706082202, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276867727706082202, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276867727706082202, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276867727706082202, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398115734007982640, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398115734007982640, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398115734007982640, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+--- !u!114 &648169572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7927751689066225361, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+  m_PrefabInstance: {fileID: 648169571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497402f558e3205438e9fbd6e2fec036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XRC.Projects.Designer.SceneLoader.SceneLoaderLogic
 --- !u!1001 &1093642947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -647,3 +951,4 @@ SceneRoots:
   - {fileID: 1856821918}
   - {fileID: 1696774259621593041}
   - {fileID: 205172070}
+  - {fileID: 648169571}
