@@ -161,9 +161,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091797866}
-  - component: {fileID: 1091797865}
-  - component: {fileID: 1091797864}
-  - component: {fileID: 1091797863}
+  - component: {fileID: 1091797869}
+  - component: {fileID: 1091797868}
+  - component: {fileID: 1091797867}
   m_Layer: 0
   m_Name: Sphere Select
   m_TagString: Untagged
@@ -171,78 +171,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1091797863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091797862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42c11561f76f8df428e111b7bac24f46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectFeedback
-  logic: {fileID: 1091797864}
-  sphereMaterial: {fileID: 2100000, guid: e9124e8fd249c9340ae86d1cddd590ea, type: 2}
-  normalColor: {r: 0.58933574, g: 0.59119487, b: 0.59119487, a: 0.2}
-  hoverColor: {r: 1, g: 0, b: 0, a: 0.3}
---- !u!114 &1091797864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091797862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d8157cbb25fa234396e7b3c9c35f416, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectLogic
-  interactor: {fileID: 1696774259621593043}
-  defaultCenter: {fileID: 1696774259621593042}
-  minRadius: 0.01
-  maxRadius: 0.3
-  defaultRadius: 0.04
-  grabAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Grab
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 0382f96f-305d-44d9-8c71-44c327dd8b1e
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  tintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
---- !u!114 &1091797865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091797862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7535f7c364d63da43b33d5baa7829c55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectInput
-  logic: {fileID: 1091797864}
-  inputSensitivity: 1
-  changeRadius:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Change Radius
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 7864e285-3381-4d05-bcd5-416badf63e79
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: -1855038590553741606, guid: 971e18a7470d71048b8bfb544f6e27b9, type: 3}
 --- !u!4 &1091797866
 Transform:
   m_ObjectHideFlags: 0
@@ -258,6 +186,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091797867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091797862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ffd113ed4d20e43b3db4624f7f3a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectFeedback
+  sphereMaterial: {fileID: 2100000, guid: e9124e8fd249c9340ae86d1cddd590ea, type: 2}
+  color: {r: 0.5, g: 0.5, b: 0.5, a: 0.3}
+  hoverColor: {r: 1, g: 0, b: 0, a: 0.5}
+--- !u!114 &1091797868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091797862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88bc37b0e1eb0fc48a993410afb3bb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectLogic
+  interactor: {fileID: 1696774259621593043}
+  minRadius: 0.01
+  maxRadius: 0.3
+  defaultRadius: 0.04
+  defaultCenter: {fileID: 1696774259621593042}
+--- !u!114 &1091797869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091797862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f18466ebf538449bd5fe848a7e347a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectInput
+  inputSensitivity: 0.5
+  changeRadius:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Change Radius
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c372529a-5269-401a-83df-60c94aee9670
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -1855038590553741606, guid: 971e18a7470d71048b8bfb544f6e27b9, type: 3}
 --- !u!1001 &1093642947
 PrefabInstance:
   m_ObjectHideFlags: 0

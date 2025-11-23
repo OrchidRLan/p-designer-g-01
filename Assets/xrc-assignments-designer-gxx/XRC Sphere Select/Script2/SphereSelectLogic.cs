@@ -45,6 +45,8 @@ public class SphereSelectLogic : MonoBehaviour
     
     private bool isSelecting = false;
     private GameObject groupParent;
+    
+    public bool IsSelecting => isSelecting;
 
     private void Awake()
     {
@@ -107,6 +109,7 @@ public class SphereSelectLogic : MonoBehaviour
         {
             ReleaseObjects();
             isSelecting = false;
+            SetRadius(defaultRadius);
         }
     }
 

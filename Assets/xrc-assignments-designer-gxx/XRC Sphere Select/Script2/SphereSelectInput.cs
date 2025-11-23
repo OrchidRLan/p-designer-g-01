@@ -33,6 +33,7 @@ public class SphereSelectInput : MonoBehaviour
 
     private void Update()
     {
+        if (sphereSelectLogic.IsSelecting) return;
         if (sphereSelectLogic == null)
             return;
 
