@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "XRC Sphere Select Input Actions",
+    "maps": [
+        {
+            "name": "Change Radius",
+            "id": "60b08805-12ee-4b0a-a6b0-3f1a3053da17",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "9d0dd221-e084-4d0e-9266-9778d24adc0b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c56c28ac-af3a-4c5e-9770-75c6e8152deb",
+                    "path": "<OculusTouchController>{RightHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
