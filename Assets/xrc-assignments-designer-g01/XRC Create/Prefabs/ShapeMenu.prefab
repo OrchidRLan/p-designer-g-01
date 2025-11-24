@@ -2397,6 +2397,7 @@ GameObject:
   - component: {fileID: 6270699312602064866}
   - component: {fileID: 5680484101551841122}
   - component: {fileID: 6432027643309935213}
+  - component: {fileID: -6080817087801605660}
   m_Layer: 5
   m_Name: ShapeMenu
   m_TagString: Untagged
@@ -2541,6 +2542,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &-6080817087801605660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432010634544040122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041223b48bd7c499e84f3dfecf189785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XRC.Toolkit.Create.ShapeMenuController
+  m_CreateLogic: {fileID: 0}
 --- !u!1 &5858372349898089085
 GameObject:
   m_ObjectHideFlags: 0

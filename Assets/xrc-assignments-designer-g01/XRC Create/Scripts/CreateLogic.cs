@@ -159,6 +159,18 @@ namespace XRC.Toolkit.Create
             m_PreviewObject.SetActive(false);
             m_IsPreviewActive = false;
         }
+        public void ResetPreview()
+        {
+            if (m_PreviewObject == null)
+            {
+                return;
+            }
+
+            Destroy(m_PreviewObject);
+            m_PreviewObject = null;
+            m_IsPreviewActive = false;
+        }
+
 
         //create the preview object once and reuse it
         private void EnsurePreviewObjectExists()

@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
   - enabled: 1
+    path: Assets/xrc-assignments-designer-g01/XRC Create/Scenes/XRC Create.unity
+    guid: a05e7660c42b1bc468dd5b1afeb8440f
+  - enabled: 1
     path: Assets/xrc-assignments-designer-g01/Designer/Scenes/Designer.unity
     guid: 3c6b64406e980de49886e2a3771f9cff
   - enabled: 1
     path: Assets/xrc-assignments-designer-g01/XRC Grab Move/Scenes/XRC Grab Move.unity
     guid: 0de42b58d8b6a454487f6bbf64c8888d
-  - enabled: 1
-    path: Assets/xrc-assignments-designer-g01/XRC Create/Scenes/XRC Create.unity
-    guid: a05e7660c42b1bc468dd5b1afeb8440f
   - enabled: 1
     path: Assets/xrc-assignments-designer-g01/XRC Sphere Select/Scenes/XRC Sphere
       Select.unity
