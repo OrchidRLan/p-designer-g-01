@@ -20,7 +20,6 @@ namespace XRC.Toolkit.Create
                 Debug.Log("[CreatePrimitiveManager] Initialized successfully!");
             }
         }
-
         
         
         public void SetPrimitiveCube()

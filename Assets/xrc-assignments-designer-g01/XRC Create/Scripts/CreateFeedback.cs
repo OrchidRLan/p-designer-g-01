@@ -6,14 +6,18 @@ namespace XRC.Toolkit.Create
     [RequireComponent(typeof(CreateLogic))]
     public class CreateFeedback : MonoBehaviour
     {
-        [Header("preview visuals")]
+        [Header("Preview Visuals")]
         [SerializeField]
+        [Tooltip("Transparency of preview object (0 = invisible, 1 = opaque)")]
+        [Range(0f, 1f)]
         private float m_PreviewAlpha = 0.4f;
 
         [SerializeField]
+        [Tooltip("Transparency of final object (should be 1 for fully opaque)")]
+        [Range(0f, 1f)]
         private float m_FinalAlpha = 1f;
 
-        [Header("haptics")]
+        [Header("Haptics")]
         [SerializeField]
         private bool m_SendPreviewHaptics = true;
 
@@ -32,20 +36,18 @@ namespace XRC.Toolkit.Create
         {
             m_CreateLogic = GetComponent<CreateLogic>();
         }
-
-        // called when preview starts
+        
         public void OnPreviewEntered(GameObject previewObject)
         {
             ApplyPreviewMaterial(previewObject, m_PreviewAlpha);
             SendPreviewHaptics();
         }
-
-        // called when preview finalizes
+        
         public void OnPreviewExited(GameObject finalObject)
         {
             RestoreFinalMaterial(finalObject);
         }
-
+        
         public void ApplyPreviewMaterial(GameObject previewObject, float alpha)
         {
             if (previewObject == null)
@@ -58,13 +60,18 @@ namespace XRC.Toolkit.Create
             {
                 return;
             }
-
-            var mat = renderer.material;
-            var color = mat.color;
+            
+            Material mat = renderer.material;
+            
+            EnableTransparency(mat);
+            
+            Color color = mat.color;
             color.a = alpha;
             mat.color = color;
+            
+            Debug.Log($"[CreateFeedback] Preview material applied with alpha: {alpha}");
         }
-
+        
         public void RestoreFinalMaterial(GameObject finalObject)
         {
             if (finalObject == null)
@@ -78,19 +85,56 @@ namespace XRC.Toolkit.Create
                 return;
             }
 
-            // use final material from logic if set
             if (m_CreateLogic != null && m_CreateLogic.objectMaterial != null)
             {
                 renderer.material = m_CreateLogic.objectMaterial;
+                Debug.Log("[CreateFeedback] Applied objectMaterial from CreateLogic");
             }
             else
             {
-                var mat = renderer.material;
-                var color = mat.color;
+
+                Material mat = renderer.material;
+                EnableTransparency(mat);
+                
+                Color color = mat.color;
                 color.a = m_FinalAlpha;
                 mat.color = color;
+                
+                Debug.Log("[CreateFeedback] Restored material with full opacity");
             }
         }
+
+        private void EnableTransparency(Material mat)
+        {
+            if (mat == null)
+            {
+                return;
+            }
+
+
+            if (mat.HasProperty("_Mode"))
+            {
+                mat.SetFloat("_Mode", 3);
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                mat.SetInt("_ZWrite", 0);
+                mat.DisableKeyword("_ALPHATEST_ON");
+                mat.EnableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = 3000;
+            }
+
+            else if (mat.HasProperty("_Surface"))
+            {
+                mat.SetFloat("_Surface", 1);
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                mat.SetInt("_ZWrite", 0);
+                mat.renderQueue = 3000;
+                mat.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            }
+        }
+
 
         private void SendPreviewHaptics()
         {
@@ -99,11 +143,20 @@ namespace XRC.Toolkit.Create
                 return;
             }
 
-            // amplitude, duration, controller
             HapticsUtility.SendHapticImpulse(
                 m_HapticIntensity,
                 m_HapticDuration,
                 m_HapticController);
+        }
+
+        public void SetPreviewAlpha(float alpha)
+        {
+            m_PreviewAlpha = Mathf.Clamp01(alpha);
+        }
+        
+        public void SetFinalAlpha(float alpha)
+        {
+            m_FinalAlpha = Mathf.Clamp01(alpha);
         }
     }
 }
