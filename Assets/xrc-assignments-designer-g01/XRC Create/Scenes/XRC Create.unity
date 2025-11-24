@@ -131,9 +131,49 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 78fb1f3f7349fcd49aed7b61c1ddbef1, type: 3}
+    - target: {fileID: 322185373736029967, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 322185373736029967, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 890773158}
+    - target: {fileID: 322185373736029967, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPrimitiveCapsule
+      objectReference: {fileID: 0}
+    - target: {fileID: 322185373736029967, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Toolkit.Create.CreatePrimitiveManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 460050418472628146, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 831857603482489441, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 831857603482489441, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 890773158}
+    - target: {fileID: 831857603482489441, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPrimitiveSphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 831857603482489441, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Toolkit.Create.CreatePrimitiveManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 861345808026501488, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 861345808026501488, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 964837655306616843, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_text
@@ -150,6 +190,10 @@ PrefabInstance:
     - target: {fileID: 1330058446411798090, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330058446411798090, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1330058446411798090, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -203,6 +247,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: aaa8aaa30a8b1f941961bd8b326107a4, type: 2}
+    - target: {fileID: 1470161111019053989, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470161111019053989, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033126136280662099, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033126136280662099, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 890773158}
+    - target: {fileID: 2033126136280662099, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPrimitiveCylinder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033126136280662099, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Toolkit.Create.CreatePrimitiveManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2732555458048026195, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_text
       value: Capsule
@@ -214,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 3199828368172137328, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462730784914474526, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -48
       objectReference: {fileID: 0}
     - target: {fileID: 3462730784914474526, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -271,13 +343,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5486468706418532446, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5628837205426743768, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_SizeDelta.x
       value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 5628837205426743768, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5628837205426743768, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_LocalScale.y
@@ -287,6 +363,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5628837205426743768, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5733174667414236325, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_Name
       value: XRC Create Scene Loader
@@ -294,6 +374,22 @@ PrefabInstance:
     - target: {fileID: 6049705961927929521, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_text
       value: Cylinder
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096968490506788841, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096968490506788841, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 890773158}
+    - target: {fileID: 6096968490506788841, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPrimitiveCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096968490506788841, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Toolkit.Create.CreatePrimitiveManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6106087147787970129, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_text
@@ -327,6 +423,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 385
       objectReference: {fileID: 0}
+    - target: {fileID: 6432938454765934378, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432938454765934378, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 890773158}
+    - target: {fileID: 6432938454765934378, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPrimitivePlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432938454765934378, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: XRC.Toolkit.Create.CreatePrimitiveManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6473824223655124148, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -348,6 +460,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6566551894976482998, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566551894976482998, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -366,6 +482,10 @@ PrefabInstance:
     - target: {fileID: 6760382007984056129, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760382007984056129, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6760382007984056129, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -392,6 +512,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6839180411029602079, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839180411029602079, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -407,10 +531,30 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3a6bc8a803c37c1469ccdc82a30e4934, type: 3}
+    - target: {fileID: 7741496917780918038, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741496917780918038, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741496917780918038, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8552677423417967710, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 139c65fe9c79f7543873157f90371df8, type: 3}
+    - target: {fileID: 9026022823570401407, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026022823570401407, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 9111077918976386907, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -426,6 +570,10 @@ PrefabInstance:
     - target: {fileID: 9135042727081090477, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135042727081090477, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 9135042727081090477, guid: b11ef63c8194b16478d8c6f28197522a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -487,6 +635,7 @@ GameObject:
   - component: {fileID: 564329862}
   - component: {fileID: 564329861}
   - component: {fileID: 564329860}
+  - component: {fileID: 564329864}
   m_Layer: 0
   m_Name: XRC Create Tool
   m_TagString: Untagged
@@ -575,6 +724,80 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564329859}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564329864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564329859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090ee583bc7208049abe8b56f87d3091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XRC.Toolkit.Create.CreatePrimitiveManager
+--- !u!1 &890773157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 890773160}
+  - component: {fileID: 890773159}
+  - component: {fileID: 890773158}
+  m_Layer: 0
+  m_Name: CreatePrimitiveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &890773158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890773157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090ee583bc7208049abe8b56f87d3091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XRC.Toolkit.Create.CreatePrimitiveManager
+--- !u!114 &890773159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890773157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a87dcfc2d8d4d2db791d0e5529d1f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XRC.Toolkit.Create.CreateLogic
+  m_PrimitiveType: 3
+  m_MinScale: 0.05
+  m_MaxScale: 2
+  m_ObjectMaterial: {fileID: 0}
+  m_PreviewMaterial: {fileID: 0}
+--- !u!4 &890773160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890773157}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1122,3 +1345,4 @@ SceneRoots:
   - {fileID: 564329863}
   - {fileID: 1281202524}
   - {fileID: 144919548}
+  - {fileID: 890773160}
