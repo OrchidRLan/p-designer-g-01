@@ -63,7 +63,7 @@ namespace XRC.Projects.Designer.SceneLoader
                 DestroyImmediate(gameObject);
 
                 // Refresh persistent instance's input action after duplicate destruction
-                var persistentInput = s_Instance.GetComponent<SceneLoaderInput>();
+                var persistentInput = s_Instance.GetComponent<CSceneLoaderInput>();
                 if (persistentInput != null)
                 {
                     persistentInput.RefreshInputAction();

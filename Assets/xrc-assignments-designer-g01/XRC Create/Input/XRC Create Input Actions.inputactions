@@ -1,0 +1,123 @@
+{
+    "version": 1,
+    "name": "XRC Create Input Actions",
+    "maps": [
+        {
+            "name": "XRC Create",
+            "id": "25bb6a2c-44fe-416d-a1a4-4f2879628867",
+            "actions": [
+                {
+                    "name": "DisableUniformScaling",
+                    "type": "Button",
+                    "id": "d7002144-1506-4f3a-9449-a9702bed9ea8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CreateL",
+                    "type": "Button",
+                    "id": "1e9921ab-67e6-46d3-abff-4ba4206656ec",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CreateR",
+                    "type": "Button",
+                    "id": "71bfde5d-e7a8-46ea-828f-054a298a903c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HideShowMenu",
+                    "type": "Button",
+                    "id": "d44f6f52-8e09-4ae2-a666-31f428240711",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b54484c1-3bc4-4983-837b-3a0e817d5136",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DisableUniformScaling",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50eb9bb6-3a41-477a-a0e7-e70577de6390",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CreateL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01e0b892-e64e-4d09-9901-fb05f9cc564d",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CreateR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88990a1c-01a5-4a9b-b15f-b0e18ea42ae6",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HideShowMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "menu",
+            "id": "16a059f5-9b78-452a-8346-61c211270bb9",
+            "actions": [
+                {
+                    "name": "toggle",
+                    "type": "Button",
+                    "id": "b532b6d4-06ee-4ab9-9ada-bf073c01715e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9c2f9879-3471-4be7-93c7-47c057cca45c",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

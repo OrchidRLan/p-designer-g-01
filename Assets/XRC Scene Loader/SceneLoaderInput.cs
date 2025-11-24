@@ -9,7 +9,7 @@ namespace XRC.Projects.Designer.SceneLoader
     /// Follows XRC Toolkit Input component pattern with InputActionProperty.
     /// </summary>
     [AddComponentMenu("XRC/Designer/Scene Loader Input")]
-    public class SceneLoaderInput : MonoBehaviour
+    public class CSceneLoaderInput : MonoBehaviour
     {
         [Header("Input Configuration")]
         [SerializeField]
@@ -29,7 +29,7 @@ namespace XRC.Projects.Designer.SceneLoader
             if (m_UIPanel != null)
             {
                 m_UIPanel.SetActive(false);
-                Debug.Log($"SceneLoaderInput: Initialized on '{gameObject.name}' with UI Panel '{m_UIPanel.name}'");
+                Debug.Log($"CSceneLoaderInput : Initialized on '{gameObject.name}' with UI Panel '{m_UIPanel.name}'");
             }
         }
 
@@ -58,7 +58,7 @@ namespace XRC.Projects.Designer.SceneLoader
                 if (canvas != null)
                 {
                     m_UIPanel = canvas.gameObject;
-                    Debug.Log($"SceneLoaderInput: Found Canvas child '{m_UIPanel.name}' and updated reference.");
+                    Debug.Log($"CSceneLoaderInput : Found Canvas child '{m_UIPanel.name}' and updated reference.");
                 }
                 else
                 {
@@ -84,7 +84,7 @@ namespace XRC.Projects.Designer.SceneLoader
         {
             if (m_UIPanel == null)
             {
-                Debug.LogError("SceneLoaderInput: UI Panel reference is null. Cannot toggle UI.", this);
+                Debug.LogError("CSceneLoaderInput : UI Panel reference is null. Cannot toggle UI.", this);
                 return;
             }
 
@@ -124,7 +124,7 @@ namespace XRC.Projects.Designer.SceneLoader
             if (m_ToggleMenuAction.action != null)
             {
                 m_ToggleMenuAction.action.Enable();
-                Debug.Log("SceneLoaderInput: Input action refreshed and re-enabled.");
+                Debug.Log("CSceneLoaderInput : Input action refreshed and re-enabled.");
             }
         }
     }
