@@ -82,20 +82,24 @@ public class GrabMoveFeedback : MonoBehaviour
     {
         if (textInstance == null || textComponent == null || lineRenderer == null)
             return;
-        
+    
         textComponent.text = worldScalePercent.ToString("F0") + "%";
-        
+    
         Vector3 leftPos = lineRenderer.GetPosition(0);
         Vector3 rightPos = lineRenderer.GetPosition(1);
-        
+    
         Vector3 midpoint = (leftPos + rightPos) * 0.5f;
-        
+    
         textInstance.transform.position = midpoint + Vector3.up * TEXT_OFFSET_Y;
         
-        Vector3 lineDirection = (rightPos - leftPos).normalized;
-        textInstance.transform.right = lineDirection;
+        var cam = Camera.main;
+        if (cam != null)
+        {
+            textInstance.transform.forward = cam.transform.forward;
+        }
     }
 
+    
     public void SetFeedbackActive(bool isActive)
     {
         if (!isInitialized)
