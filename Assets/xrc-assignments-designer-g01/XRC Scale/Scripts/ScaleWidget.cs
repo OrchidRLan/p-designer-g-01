@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
+//TODO fix the sizes of stems
 public class ScaleWidget : MonoBehaviour
 {
     [SerializeField]
@@ -70,6 +71,14 @@ public class ScaleWidget : MonoBehaviour
     {
         GameObject handle = Instantiate(HandlePrefab, transform);
         handle.name = name;
+
+        XRGrabInteractable grab = handle.GetComponent<XRGrabInteractable>();
+        if (grab != null)
+        {
+            grab.trackPosition = false;
+            grab.trackRotation = false;
+            grab.throwOnDetach = false;
+        }
 
         Renderer r = handle.GetComponentInChildren<Renderer>();
         r.material.color = color;
@@ -141,11 +150,15 @@ public class ScaleWidget : MonoBehaviour
         
         if (isGrabbed)
         {
+            var interactor = grab.interactorsSelecting[0];
+            Transform handTransform = interactor.GetAttachTransform(grab);
+            Vector3 handPosition = handTransform != null ? handTransform.position : interactor.transform.position;
+
             Transform targetT = ScaleLogic.editObject.transform;
             Vector3 axisWorld = targetT.rotation * localAxis;
 
-            Vector3 targetToHandle = handle.transform.position - targetT.position;
-            float projectedDist = Vector3.Dot(targetToHandle, axisWorld);
+            Vector3 targetToHand = handPosition - targetT.position;
+            float projectedDist = Vector3.Dot(targetToHand, axisWorld);
 
             MeshFilter mf = ScaleLogic.editObject.GetComponent<MeshFilter>();
             Bounds b = (mf != null) ? mf.sharedMesh.bounds : new Bounds(Vector3.zero, Vector3.one);
@@ -188,7 +201,14 @@ public class ScaleWidget : MonoBehaviour
 
         if (stem != null)
         {
-            stem.SetPosition(0, ScaleLogic.editObject.transform.position);
+            Transform targetT = ScaleLogic.editObject.transform;
+            Vector3 axisWorld = targetT.rotation * localAxis;
+            stem.widthMultiplier = 1.0f;
+            stem.startWidth = StemWidth;
+            stem.endWidth = StemWidth;
+            Vector3 stemStart = handle.transform.position - (axisWorld * HandleOffset);
+
+            stem.SetPosition(0, stemStart);
             stem.SetPosition(1, handle.transform.position);
         }
     }
