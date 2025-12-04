@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ScaleWidget : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class ScaleWidget : MonoBehaviour
         DestroyHandles();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (ScaleLogic == null || !ScaleLogic.isEditModeActive || ScaleLogic.editObject == null)
         {
@@ -135,9 +136,10 @@ public class ScaleWidget : MonoBehaviour
             return;
         }
 
-        Vector3 idealPos = CalculateTargetPosition(localAxis);
+        XRGrabInteractable grab = handle.GetComponent<XRGrabInteractable>();
+        bool isGrabbed = (grab != null && grab.isSelected);
         
-        if (Vector3.Distance(handle.transform.position, idealPos) > 0.001f)
+        if (isGrabbed)
         {
             Transform targetT = ScaleLogic.editObject.transform;
             Vector3 axisWorld = targetT.rotation * localAxis;
@@ -175,13 +177,12 @@ public class ScaleWidget : MonoBehaviour
             }
 
             ScaleLogic.SetScale(s);
-            
             handle.transform.position = targetT.position + (axisWorld * projectedDist);
             handle.transform.rotation = targetT.rotation;
         }
         else
         {
-            handle.transform.position = idealPos;
+            handle.transform.position = CalculateTargetPosition(localAxis);
             handle.transform.rotation = ScaleLogic.editObject.transform.rotation;
         }
 
