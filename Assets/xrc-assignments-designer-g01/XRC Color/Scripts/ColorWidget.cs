@@ -2,7 +2,7 @@
 {
     using UnityEngine;
     using UnityEngine.InputSystem;
-    public class ColorWidget
+    public class ColorWidget: MonoBehaviour
     {
         [Header("Cursor Configuration")] [SerializeField]
         private Transform cursorTransform;
@@ -109,16 +109,71 @@
         private void SampleColorAtCursor()
         {
             if (cursorTransform == null || cylinderTransform == null) return;
-            Vector3 localPositon =
-                cylinderTransform.InverseTransformDirection(cursorTransform.position);
-            
-            float radiusXZ == Mathf.Sqrt(localCursorPositon.x )
+            Vector3 localCursorPos =
+                cylinderTransform.InverseTransformPoint(cursorTransform.position);
 
+            float radiusXZ = Mathf.Sqrt(localCursorPos.x * localCursorPos.x +
+                                        localCursorPos.z * localCursorPos.z);
+            bool insideRadius = radiusXZ <= cylinderRadius;
+            bool insideHeight = localCursorPos.y >= 0f &&
+                                localCursorPos.y <= cylinderMaxHeight;
+
+            isCursorInside = insideRadius && insideHeight;
+
+            if (!isCursorInside)
+            {
+                if (!cursorRenderer != null)
+                {
+                    cursorRenderer.material.color = Color.grey;
+                }
+
+                return;
+            }
+
+            currentHue = (Mathf.Atan2(localCursorPos.z, localCursorPos.x) * Mathf.Rad2Deg + 360f) %
+                         360f;
+            currentHue /= 360f;
+            currentSaturation = Mathf.Clamp01(radiusXZ / cylinderRadius);
+            currentValue = Mathf.Clamp01(localCursorPos.y / cylinderMaxHeight);
+            currentColor = Color.HSVToRGB(currentHue, currentSaturation, currentValue);
+
+            if (cursorRenderer != null)
+            {
+                cursorRenderer.material.color = currentColor;
+            }
         }
 
         private void UpdateCylinderHeight()
         {
+            if (cylinderTransform == null) return;
             
+            float targetHeight = isCursorInside ? cylinderTransform.localScale.y : 0.01f;
+
+            float scaleY = targetHeight / 2f;
+            cylinderTransform.localScale = new Vector3(cylinderRadius * 2f, scaleY, cylinderRadius * 2f);
+
+            Vector3 localPos = cylinderTransform.localPosition;
+            localPos.y = targetHeight / 2f;
+            cylinderTransform.localPosition = localPos;
+
+            if (cylinderRenderer != null && isCursorInside)
+            {
+                Color topColor = Color.HSVToRGB(currentHue, currentSaturation, currentValue);
+                cylinderRenderer.material.color = topColor;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (cursorInstance != null)
+            {
+                Destroy(cursorInstance);
+            }
+            
+            if (cylinderInstance != null)
+            {
+                Destroy(cylinderInstance);
+            }
         }
     }
 }

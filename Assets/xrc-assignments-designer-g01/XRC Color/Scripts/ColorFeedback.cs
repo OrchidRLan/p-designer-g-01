@@ -2,7 +2,7 @@
 {
     using UnityEngine;
     using UnityEngine.InputSystem;
-    public class ColorFeedback
+    public class ColorFeedback: MonoBehaviour
     {
 
         public void PlayApplySound()
