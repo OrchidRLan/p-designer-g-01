@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "XRC Mesh Input Actions",
+    "maps": [
+        {
+            "name": "Mesh",
+            "id": "aef28cc8-d378-45ad-a8cf-2dc4dc60133d",
+            "actions": [
+                {
+                    "name": "ToggleEditMode",
+                    "type": "Button",
+                    "id": "a5708e34-e057-4226-97a8-d7671b4d5728",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "76d42da2-06c2-4381-b6f9-a1c492a21278",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleEditMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
