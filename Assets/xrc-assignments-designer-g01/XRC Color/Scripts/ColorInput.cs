@@ -89,7 +89,7 @@
 
                 if (isPressed && !wasApplyPressed)
                 {
-                    colorLogic.ColorApply();
+                    colorLogic.ApplyColor();
                 }
                 
                 wasApplyPressed = isPressed;

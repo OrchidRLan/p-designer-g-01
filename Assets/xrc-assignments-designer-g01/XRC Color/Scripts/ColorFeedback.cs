@@ -4,6 +4,10 @@
     using UnityEngine.InputSystem;
     public class ColorFeedback
     {
-        
+
+        public void PlayApplySound()
+        {
+            
+        }
     }
 }
