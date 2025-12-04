@@ -1,6 +1,55 @@
 {
-    "version": 0,
+    "version": 1,
     "name": "Color Input Actions",
-    "maps": [],
+    "maps": [
+        {
+            "name": "Color",
+            "id": "cba9305f-87ea-420a-b301-356848c09fb7",
+            "actions": [
+                {
+                    "name": "Edit Mode Toggle Action",
+                    "type": "Button",
+                    "id": "c9d82ffd-a951-441a-9ba5-dc9c2299b950",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Apply Color Action",
+                    "type": "Value",
+                    "id": "465ca080-5fcc-404f-9588-a208a58e635b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6882d1c3-0b2e-4dd8-98d3-45f390569d61",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Edit Mode Toggle Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02c88165-0d42-4cdc-8862-5940ed2592ee",
+                    "path": "<XRController>{RightHand}/{Trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Apply Color Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
     "controlSchemes": []
 }

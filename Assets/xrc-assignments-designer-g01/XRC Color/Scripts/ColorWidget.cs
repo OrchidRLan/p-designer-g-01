@@ -4,21 +4,21 @@
     using UnityEngine.InputSystem;
     public class ColorWidget: MonoBehaviour
     {
-        [Header("Cursor Configuration")] [SerializeField]
-        private Transform cursorTransform;
-        private GameObject cursorVisualizationPrefab;
+        [Header("Cursor Configuration")] 
+        [SerializeField] private Transform cursorTransform;
+        [SerializeField] private GameObject cursorVisualizationPrefab;
         
-        [Header("HSV Cylinder")] [SerializeField]
-        private Transform cylinderParent;
-        private GameObject cylinderPrefab;
+        [Header("HSV Cylinder")] 
+        [SerializeField] private Transform cylinderParent;
+        [SerializeField] private GameObject cylinderPrefab;
         private Vector3 positionOffset = new Vector3(0.1f, 0f, -0.05f);
         private Vector3 rotationOffset = new Vector3(-45f, 0f, 0f);
         
         private float cylinderRadius = 0.1f;
         private float cylinderMaxHeight = 0.2f;
         
-        [Header("Input Actions")]
-        [SerializeField] private InputActionReference applyColorAction;
+        // [Header("Input Actions")]
+        // [SerializeField] private InputActionReference applyColorAction;
 
         private GameObject cursorInstance;
         private GameObject cylinderInstance;
