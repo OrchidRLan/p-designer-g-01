@@ -6,7 +6,7 @@ namespace xrc_assignments_designer_g01.XRC_Color.Scripts
     public class ColorLogic:MonoBehaviour
     {
         [SerializeField] private GameObject editObject;
-        [SerializeField] private Color Color;
+        [SerializeField] private Color CurrentColor = Color.white;
         
         private ColorWidget colorWidget;
         private ColorFeedback colorFeedback;
@@ -14,12 +14,11 @@ namespace xrc_assignments_designer_g01.XRC_Color.Scripts
         private Renderer targetrenderer;
         private MaterialPropertyBlock propertyBlock;
 
-        public Color color()
+        public Color Color
         {
-            get => color();
-            set => color = value;
+            get => Color;
+            set => Color = value;
         }
-        
         
         public void EnterEditMode()
         {
