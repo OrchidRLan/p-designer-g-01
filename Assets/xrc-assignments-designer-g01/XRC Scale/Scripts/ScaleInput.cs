@@ -132,6 +132,10 @@ public class ScaleInput : MonoBehaviour
 
     public void OnSelectEntered(SelectEnterEventArgs args)
     {
+        if (scaleLogic.isEditModeActive)
+        {
+            return;
+        }
         if (args.interactableObject != null)
         {
             if (args.interactableObject.transform.IsChildOf(this.transform))
@@ -145,7 +149,7 @@ public class ScaleInput : MonoBehaviour
         if (args.interactableObject != null)
         {
             GameObject grabbedObject = args.interactableObject.transform.gameObject;
-            
+                
             if (scaleLogic != null) 
             {
                 scaleLogic.OnEditObjectChanging(grabbedObject);
@@ -162,6 +166,10 @@ public class ScaleInput : MonoBehaviour
 
     public void OnSelectExited(SelectExitEventArgs args)
     {
+        if (scaleLogic.isEditModeActive)
+        {
+            return;
+        }
         if (args.interactableObject != null)
         {
             if (args.interactableObject.transform.IsChildOf(this.transform))
