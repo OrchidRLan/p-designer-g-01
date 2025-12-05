@@ -7,7 +7,7 @@
             "id": "cba9305f-87ea-420a-b301-356848c09fb7",
             "actions": [
                 {
-                    "name": "Edit Mode Toggle Action",
+                    "name": "Enter Edit Mode Action",
                     "type": "Button",
                     "id": "c9d82ffd-a951-441a-9ba5-dc9c2299b950",
                     "expectedControlType": "",
@@ -17,12 +17,21 @@
                 },
                 {
                     "name": "Apply Color Action",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "465ca080-5fcc-404f-9588-a208a58e635b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Exit Edit Mode Action",
+                    "type": "Button",
+                    "id": "0fceaf2d-6748-4248-9b1e-a04caf1b3816",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -33,18 +42,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Edit Mode Toggle Action",
+                    "action": "Enter Edit Mode Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "02c88165-0d42-4cdc-8862-5940ed2592ee",
-                    "path": "<XRController>{RightHand}/{Trigger}",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Apply Color Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b977cb5b-180f-4691-a557-9598ee51ea5c",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit Edit Mode Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

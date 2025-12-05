@@ -1,102 +1,93 @@
-﻿namespace xrc_assignments_designer_g01.XRC_Color.Scripts
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class ColorInput : MonoBehaviour
 {
-    using UnityEngine;
-    using UnityEngine.InputSystem;
+    [Header("Input Actions")]
+    [SerializeField] private InputActionProperty enterEditModeAction; 
+    [SerializeField] private InputActionProperty confirmAction;     
+    [SerializeField] private InputActionProperty applyColorAction;  
+    
+    [Header("References")]
+    [SerializeField] private ColorLogic colorLogic;
+    
+    private bool wasEnterPressed = false;
+    private bool wasConfirmPressed = false;
+    private bool wasApplyPressed = false;
 
-    public class ColorInput: MonoBehaviour
+    private void Awake()
     {
-        [Header("Input Actions")]
-        [SerializeField] private InputActionProperty editModeToggleAction;
-        [SerializeField] private InputActionProperty applyColorAction;
+        if (colorLogic == null)
+        {
+            colorLogic = GetComponent<ColorLogic>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        enterEditModeAction.action?.Enable();
+        confirmAction.action?.Enable();
+        applyColorAction.action?.Enable();
+    }
+
+    private void OnDisable()
+    {
+        enterEditModeAction.action?.Disable();
+        confirmAction.action?.Disable();
+        applyColorAction.action?.Disable();
+    }
+
+    private void Update()
+    {
+        HandleEnterEditMode();
+        HandleConfirm();
+        HandleColorApplication();
+    }
+
+    private void HandleEnterEditMode()
+    {
+        if (enterEditModeAction.action == null || colorLogic == null) return;
         
-        private ColorLogic colorLogic;
-        private bool isEditModeActive = false;
-        private bool wasTogglePressed = false;
-        private bool wasApplyPressed = false;
-
-        private void Awake()
+        bool isPressed = enterEditModeAction.action.ReadValue<float>() > 0.5f;
+        
+        if (isPressed && !wasEnterPressed && !colorLogic.IsEditMode)
         {
-            if (colorLogic == null)
-            {
-                colorLogic = GetComponent<ColorLogic>();
-            }
+            colorLogic.EnterEditMode();
         }
+        
+        wasEnterPressed = isPressed;
+    }
 
-        private void OnEnable()
+    private void HandleConfirm()
+    {
+        if (confirmAction.action == null || colorLogic == null) return;
+        
+        bool isPressed = confirmAction.action.ReadValue<float>() > 0.5f;
+        
+        if (isPressed && !wasConfirmPressed)
         {
-            if (editModeToggleAction != null)
+            if (colorLogic.IsEditMode)
             {
-                editModeToggleAction.action.Enable();
-            }
-
-            if (applyColorAction != null)
-            {
-                applyColorAction.action.Enable();
-            }
-        }
-
-        private void OnDisable()
-        {
-            if (editModeToggleAction != null)
-            {
-                editModeToggleAction.action.Disable();
-            }
-
-            if (applyColorAction != null)
-            {
-                applyColorAction.action.Disable();
-            }
-        }
-
-        private void Update()
-        {
-            HandleEditModeToggle();
-            HandleColorApplication();
-        }
-
-        private void HandleEditModeToggle()
-        {
-            if (editModeToggleAction == null || colorLogic == null)
-            {
-                bool isPressed = editModeToggleAction.action.ReadValue<float>() > 0.5f;
-                if (isPressed && !wasTogglePressed)
-                {
-                    isEditModeActive = !isEditModeActive;
-                }
-
-                if (isEditModeActive)
-                {
-                    colorLogic.EnterEditMode();
-                }
-                else
-                {
-                    colorLogic.ExitEditMode();
-                }
-                
-                wasTogglePressed = isPressed;
-            }
-        }
-
-        private void HandleColorApplication()
-        {
-            if (applyColorAction != null || colorLogic == null)
-            {
-                bool isPressed = applyColorAction.action.ReadValue<float>() > 0.5f;
-                if (isPressed && !wasApplyPressed)
-                {
-                    isEditModeActive = !isEditModeActive;
-                }
-
-                if (isPressed && !wasApplyPressed)
-                {
-                    colorLogic.ApplyColor();
-                }
-                
-                wasApplyPressed = isPressed;
+                colorLogic.ExitEditMode();
             }
         }
         
-        
+        wasConfirmPressed = isPressed;
+    }
 
+    private void HandleColorApplication()
+    {
+        if (applyColorAction.action == null || colorLogic == null) return;
+        
+        if (!colorLogic.IsEditMode) return;
+        
+        bool isPressed = applyColorAction.action.ReadValue<float>() > 0.5f;
+        
+        if (isPressed && !wasApplyPressed)
+        {
+            colorLogic.ApplyColor();
+        }
+        
+        wasApplyPressed = isPressed;
     }
 }
