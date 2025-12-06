@@ -729,6 +729,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &623145264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 572766827643350483, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+  m_PrefabInstance: {fileID: 1856821918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &794858501
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &832721755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,24 +1884,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScaleCompensation
   playerTransform: {fileID: 859846613}
   objectsToCompensate:
-  - target: {fileID: 1856821919}
+  - target: {fileID: 623145264}
+    type: 1
+    baseScale: {x: 1, y: 1, z: 1}
+    baseCanvasScale: 1
+    canvas: {fileID: 0}
+    lineRenderer: {fileID: 0}
+    isInitialized: 0
+  - target: {fileID: 1691434828}
     type: 0
-    baseScale: {x: 0, y: 0, z: 0}
+    baseScale: {x: 1, y: 1, z: 1}
     baseCanvasScale: 0
     canvas: {fileID: 0}
     lineRenderer: {fileID: 0}
     isInitialized: 0
-  - target: {fileID: 832721757}
-    type: 0
-    baseScale: {x: 0, y: 0, z: 0}
-    baseCanvasScale: 0
-    canvas: {fileID: 0}
-    lineRenderer: {fileID: 0}
-    isInitialized: 0
-  - target: {fileID: 2132472169}
-    type: 0
-    baseScale: {x: 0, y: 0, z: 0}
-    baseCanvasScale: 0
+  - target: {fileID: 2132472170}
+    type: 1
+    baseScale: {x: 1, y: 1, z: 1}
+    baseCanvasScale: 0.0005
     canvas: {fileID: 0}
     lineRenderer: {fileID: 0}
     isInitialized: 0
@@ -1964,8 +1969,8 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -2718927981735460482, guid: b6d91389792b144439ac3cb712c59f7c, type: 3}
-  leftController: {fileID: 0}
-  rightController: {fileID: 0}
+  leftController: {fileID: 1161849794}
+  rightController: {fileID: 1274023427}
 --- !u!114 &1408094525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2226,6 +2231,11 @@ GameObject:
 --- !u!223 &1691434822 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 4253449700561329517, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
+  m_PrefabInstance: {fileID: 1888847066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1691434828 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1350443835820125539, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
   m_PrefabInstance: {fileID: 1888847066}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1757717452
@@ -2589,11 +2599,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
---- !u!4 &1856821919 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6884229230216068927, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
-  m_PrefabInstance: {fileID: 1856821918}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1888847066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2972,7 +2977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057497945886626785, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
       propertyPath: m_Name
-      value: XRC CreateScene Loader UI (1)
+      value: XRC CreateScene Loader UI
       objectReference: {fileID: 0}
     - target: {fileID: 5057497945886626785, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
       propertyPath: m_IsActive
@@ -3509,9 +3514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497402f558e3205438e9fbd6e2fec036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XRC.Projects.Designer.SceneLoader.SceneLoaderLogic
---- !u!224 &2132472169 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4816415616623455415, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+--- !u!4 &2132472170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1671937784076098868, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
   m_PrefabInstance: {fileID: 2132472167}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
