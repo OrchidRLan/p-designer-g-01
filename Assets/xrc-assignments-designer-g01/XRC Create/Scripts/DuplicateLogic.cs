@@ -14,10 +14,37 @@ public class DuplicateLogic : MonoBehaviour
     [Header("Options")]
     public bool keepParent = true;         
     public bool nameWithCopySuffix = true; 
-
+    
+    [Header("UI")]
+    public GameObject deleteIcon;
     private void Awake()
     {
         if (!interactionManager) interactionManager = FindObjectOfType<XRInteractionManager>();
+        if (deleteIcon != null)
+        {
+            deleteIcon.SetActive(false);
+        }
+    }
+    private void Update()
+    {
+        bool hasSelection = false;
+        foreach (var interactor in selectionInteractors)
+        {
+            if (interactor == null)
+            {
+                continue;
+            }
+
+            if (interactor.interactablesSelected.Count > 0)
+            {
+                hasSelection = true;
+                break;
+            }
+        }
+        if (deleteIcon.activeSelf != hasSelection)
+        {
+            deleteIcon.SetActive(hasSelection);
+        }
     }
 
     private void OnEnable()

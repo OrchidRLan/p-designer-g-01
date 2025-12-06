@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-//TODO fix the sizes of stems
 public class ScaleWidget : MonoBehaviour
 {
     [SerializeField]
