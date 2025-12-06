@@ -19,10 +19,10 @@ public class GrabMoveFeedback : MonoBehaviour
     private TextMeshPro textComponent;
     
     [Header("Settings")]
-    [SerializeField] private float textOffsetY = 0.2f;
+    [SerializeField] private float textOffsetY = 0.05f;
     [SerializeField] private float fixedPivotSize = 0.02f;
     [SerializeField] private float fixedTextScale = 0.01f;
-    [SerializeField] private float fixedLineWidth = 0.002f;
+    [SerializeField] private float fixedLineWidth = 0.02f;
     
     private bool isInitialized = false;
     
