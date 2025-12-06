@@ -1052,7 +1052,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7636963504231601996, guid: 990cb7f6e81794608a70f6143a6cfe02, type: 3}
   m_DuplicateAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Duplicate
       m_Type: 0
@@ -1064,7 +1064,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -9041654620200389549, guid: 9fb01d9cf77b23449bccd7f4794144d4, type: 3}
   m_DeleteAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Delete
       m_Type: 0

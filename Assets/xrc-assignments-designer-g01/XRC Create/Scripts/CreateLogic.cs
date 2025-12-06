@@ -163,8 +163,28 @@ namespace XRC.Toolkit.Create
                     renderer.material = m_ObjectMaterial;
             }
 
-            if (!finalObject.GetComponent<XRGrabInteractable>())
-                finalObject.AddComponent<XRGrabInteractable>();
+            // Add and configure XRGrabInteractable
+            var grabInteractable = finalObject.GetComponent<XRGrabInteractable>();
+            if (grabInteractable == null)
+            {
+                grabInteractable = finalObject.AddComponent<XRGrabInteractable>();
+            }
+
+            // Configure grab behavior to use grab point instead of object center
+            // This prevents large objects from blocking the controller
+            grabInteractable.movementType = XRBaseInteractable.MovementType.Instantaneous;
+            grabInteractable.trackPosition = true;
+            grabInteractable.trackRotation = true;
+            grabInteractable.throwOnDetach = false;
+            
+            // KEY FIX: Use dynamic attach - grabs at the point where hand touches object
+            grabInteractable.useDynamicAttach = true;
+            grabInteractable.matchAttachPosition = true;
+            grabInteractable.matchAttachRotation = true;
+            grabInteractable.snapToColliderVolume = false;
+            
+            // Smooth grab animation
+            grabInteractable.attachEaseInTime = 0.1f;
 
             var rb = finalObject.GetComponent<Rigidbody>();
             if (rb != null)
@@ -175,6 +195,8 @@ namespace XRC.Toolkit.Create
 
             m_PreviewObject.SetActive(false);
             m_IsPreviewActive = false;
+
+            Debug.Log($"[CreateLogic] Created {m_PrimitiveType} with dynamic attach enabled");
 
             return finalObject;
         }
@@ -240,8 +262,18 @@ namespace XRC.Toolkit.Create
                 if (m_NameWithCopySuffix)
                     cloneGO.name = t.gameObject.name + "_copy";
 
-                if (!cloneGO.GetComponent<XRGrabInteractable>())
-                    cloneGO.AddComponent<XRGrabInteractable>();
+                // Configure duplicated object with same grab settings
+                var grabInteractable = cloneGO.GetComponent<XRGrabInteractable>();
+                if (grabInteractable == null)
+                {
+                    grabInteractable = cloneGO.AddComponent<XRGrabInteractable>();
+                }
+                
+                // Apply same settings as newly created objects
+                grabInteractable.useDynamicAttach = true;
+                grabInteractable.matchAttachPosition = true;
+                grabInteractable.matchAttachRotation = true;
+                grabInteractable.snapToColliderVolume = false;
 
                 foreach (var rb in cloneGO.GetComponentsInChildren<Rigidbody>(true))
                 {
