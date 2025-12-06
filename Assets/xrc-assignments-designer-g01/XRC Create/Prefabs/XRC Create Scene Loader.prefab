@@ -1233,6 +1233,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 8709391810700252280, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8817593851011158525, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0

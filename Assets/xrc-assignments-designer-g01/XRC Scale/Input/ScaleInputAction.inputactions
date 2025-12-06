@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "ScaleInputAction",
+    "maps": [
+        {
+            "name": "ToggleEditMode",
+            "id": "05737d1d-50f8-4340-9109-24020a4847b1",
+            "actions": [
+                {
+                    "name": "ToggleEditMode",
+                    "type": "Button",
+                    "id": "6362d9ca-4e8f-41c7-9758-7aabdc9fe330",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "039af470-7875-4d28-a236-a9038626a0e3",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleEditMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
