@@ -227,53 +227,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XRC.Toolkit.Create.CreateInput
   m_LeftTriggerAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
-      m_Name: Left Trigger
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: df1f780e-13e0-4c2e-a010-5bddb3e9cae3
+      m_Id: d5d0a739-88dd-45f7-a794-b73d418f62d6
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -20021058351376587, guid: 990cb7f6e81794608a70f6143a6cfe02, type: 3}
+    m_Reference: {fileID: 0}
   m_RightTriggerAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
-      m_Name: Right Trigger
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 74709fff-f9ae-4beb-bd15-2558a280d728
+      m_Id: 2d1d9f3a-879c-46f7-9720-f076f5ac4d60
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 7636963504231601996, guid: 990cb7f6e81794608a70f6143a6cfe02, type: 3}
+    m_Reference: {fileID: 0}
   m_DuplicateAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
-      m_Name: Duplicate
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: d4d10d0b-532c-4771-a22e-5d681bbfd4cc
+      m_Id: 398a41db-dffd-4af6-aad8-ddc4359f6079
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -9041654620200389549, guid: 9fb01d9cf77b23449bccd7f4794144d4, type: 3}
+    m_Reference: {fileID: 0}
   m_DeleteAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
-      m_Name: Delete
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: f2a074c3-d470-45f9-9f65-4b4f1a372f23
+      m_Id: 7932302f-9797-46cb-af91-4589814ccf3d
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -2413964573271836892, guid: 9fb01d9cf77b23449bccd7f4794144d4, type: 3}
+    m_Reference: {fileID: 0}
   m_DisableUniformScalingAction:
     m_UseReference: 1
     m_Action:
@@ -1470,6 +1470,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Direct Interactor
       objectReference: {fileID: 0}
+    - target: {fileID: 2489627761431070227, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+      propertyPath: m_Size.x
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489627761431070227, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+      propertyPath: m_Size.y
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489627761431070227, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3548130350fee86479a0c970e9e71be3, type: 3}
+    - target: {fileID: 2489627761431070227, guid: 9854c6854e2c66f44a31102914428393, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4996946995369546727, guid: 9854c6854e2c66f44a31102914428393, type: 3}
       propertyPath: m_Name
       value: Base Rig
@@ -1537,7 +1553,7 @@ PrefabInstance:
     - target: {fileID: 5929319989893704404, guid: 9854c6854e2c66f44a31102914428393, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2732de591261d3a4e85827d4f06e9ec7, type: 3}
+      objectReference: {fileID: 21300000, guid: a62c7831fa472064ebea0c601326a57a, type: 3}
     - target: {fileID: 5929319989893704404, guid: 9854c6854e2c66f44a31102914428393, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
