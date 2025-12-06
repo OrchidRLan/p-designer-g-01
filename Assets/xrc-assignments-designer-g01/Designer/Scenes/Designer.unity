@@ -1840,7 +1840,12 @@ Transform:
   - {fileID: 1648818965}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1303766942
+--- !u!4 &1358822368 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8857088398262847116, guid: bb4d4fc1d260e914bbf58e21e3a1682a, type: 3}
+  m_PrefabInstance: {fileID: 157178438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1408094521
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1848,11 +1853,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1303766947}
-  - component: {fileID: 1303766946}
-  - component: {fileID: 1303766945}
-  - component: {fileID: 1303766944}
-  - component: {fileID: 1303766943}
+  - component: {fileID: 1408094526}
+  - component: {fileID: 1408094525}
+  - component: {fileID: 1408094524}
+  - component: {fileID: 1408094523}
+  - component: {fileID: 1408094522}
   m_Layer: 0
   m_Name: XRC GrabMove
   m_TagString: Untagged
@@ -1860,54 +1865,55 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1303766943
+--- !u!114 &1408094522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303766942}
+  m_GameObject: {fileID: 1408094521}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457bc75916610a548a9cd02c1a4c7bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: f7bd19fffdcb4ef0b96b6afe477f51b0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogicScaling
-  playerTransform: {fileID: 859846613}
-  leftController: {fileID: 1161849794}
-  rightController: {fileID: 1274023427}
-  feedback: {fileID: 1303766946}
-  enableScaling: 1
-  currentScale: 1
-  minScale: 0.01
-  maxScale: 10
---- !u!114 &1303766944
+  m_EditorClassIdentifier: Assembly-CSharp::ScaleCompensation
+  playerTransform: {fileID: 0}
+  objectsToCompensate: []
+  initialPlayerScale: 1
+--- !u!114 &1408094523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303766942}
+  m_GameObject: {fileID: 1408094521}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f22aaea93fb8da4ab3e39b8f35b79cc, type: 3}
+  m_Script: {fileID: 11500000, guid: a71e6f64397b47e38f9d80beb7ee6cc5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogicCoreMovement
-  player: {fileID: 859846613}
-  leftTransform: {fileID: 1161849794}
-  rightTransform: {fileID: 1274023427}
-  attachedObjects:
-  - {fileID: 2133401264}
-  - {fileID: 1691434828}
+  m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogic
+  player: {fileID: 0}
+  leftTransform: {fileID: 0}
+  rightTransform: {fileID: 0}
+  attachedObjects: []
   enableTranslation: 1
   enableRotation: 1
-  RestrictRotationToYaw: 0
---- !u!114 &1303766945
+  enableScaling: 1
+  restrictRotationToYaw: 0
+  minScale: 0.01
+  maxScale: 10
+  positionSmoothness: 0.3
+  rotationSmoothness: 0.3
+  scaleSmoothness: 0.3
+  minMovementThreshold: 0.0001
+  feedback: {fileID: 1408094525}
+--- !u!114 &1408094524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303766942}
+  m_GameObject: {fileID: 1408094521}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 057f1eb147e2e472cb54d8e158c8c5d0, type: 3}
@@ -1937,15 +1943,15 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -2718927981735460482, guid: b6d91389792b144439ac3cb712c59f7c, type: 3}
-  leftController: {fileID: 1161849794}
-  rightController: {fileID: 1274023427}
---- !u!114 &1303766946
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
+--- !u!114 &1408094525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303766942}
+  m_GameObject: {fileID: 1408094521}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ce11f1731e94c0d811dd576474af45a, type: 3}
@@ -1954,13 +1960,18 @@ MonoBehaviour:
   pivotPrefab: {fileID: 3010510326158471010, guid: 09c5295ec17c1dc41b1c28b08ef73980, type: 3}
   linePrefab: {fileID: 8063340464307893220, guid: e2c44ed401ffcf6459478dafcf4418ab, type: 3}
   textPrefab: {fileID: 6743804354428113940, guid: dfd85450cd9412c4cbde9f0a884dafdb, type: 3}
---- !u!4 &1303766947
+  scaleCompensation: {fileID: 1408094522}
+  textOffsetY: 0.05
+  fixedPivotSize: 0.02
+  fixedTextScale: 0.01
+  fixedLineWidth: 0.02
+--- !u!4 &1408094526
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303766942}
+  m_GameObject: {fileID: 1408094521}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.01072, y: 0, z: 0.90671}
@@ -1969,11 +1980,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1358822368 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8857088398262847116, guid: bb4d4fc1d260e914bbf58e21e3a1682a, type: 3}
-  m_PrefabInstance: {fileID: 157178438}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1536712315 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1074643999130813413, guid: 9854c6854e2c66f44a31102914428393, type: 3}
@@ -2199,11 +2205,6 @@ GameObject:
 --- !u!223 &1691434822 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 4253449700561329517, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
-  m_PrefabInstance: {fileID: 1888847066}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1691434828 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1350443835820125539, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
   m_PrefabInstance: {fileID: 1888847066}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1757717452
@@ -3478,11 +3479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497402f558e3205438e9fbd6e2fec036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XRC.Projects.Designer.SceneLoader.SceneLoaderLogic
---- !u!4 &2133401264 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6884229230216068927, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
-  m_PrefabInstance: {fileID: 1856821918}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3491,7 +3487,6 @@ SceneRoots:
   - {fileID: 1161849789}
   - {fileID: 975446122}
   - {fileID: 896439395}
-  - {fileID: 1303766947}
   - {fileID: 362707492}
   - {fileID: 921858426}
   - {fileID: 1888847066}
@@ -3499,3 +3494,4 @@ SceneRoots:
   - {fileID: 2132472167}
   - {fileID: 452133963}
   - {fileID: 1283916182}
+  - {fileID: 1408094526}
