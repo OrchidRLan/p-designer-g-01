@@ -1,30 +1,19 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GrabMoveInput : MonoBehaviour
 {
-    [SerializeField] 
-    private InputActionProperty leftGrab;
-
-    [SerializeField]
-    private InputActionProperty rightGrab;
+    [SerializeField] private InputActionProperty leftGrab;
+    [SerializeField] private InputActionProperty rightGrab;
     
     [SerializeField] private Transform leftController;
     [SerializeField] private Transform rightController;
     
-    private GrabMoveLogicScaling scalingLogic;
-    private GrabMoveLogicCoreMovement grabMoveLogic;
+    private GrabMoveLogic grabMoveLogic;
     
-    private Vector3 leftControllerPosition;
-    private Vector3 rightControllerPosition;
-    
-    private bool isActive = false;
-
     private void Awake()
     {
-        grabMoveLogic = GetComponent<GrabMoveLogicCoreMovement>();
-        scalingLogic = GetComponent<GrabMoveLogicScaling>();
+        grabMoveLogic = GetComponent<GrabMoveLogic>();
     }
 
     private void OnEnable()
@@ -40,7 +29,7 @@ public class GrabMoveInput : MonoBehaviour
         }
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         if (leftGrab.action != null)
         {
@@ -60,48 +49,40 @@ public class GrabMoveInput : MonoBehaviour
 
         bool leftPressed  = leftValue  > 0.1f;
         bool rightPressed = rightValue > 0.1f;
-
         bool bothPressed = leftPressed && rightPressed;
+
+        if (grabMoveLogic == null) return;
 
         if (bothPressed)
         {
-            if (grabMoveLogic != null && !grabMoveLogic.IsRunning)
+            if (!grabMoveLogic.IsRunning)
             {
                 grabMoveLogic.Begin();
-            }
-            
-            if (scalingLogic != null && !scalingLogic.IsRunning)
-            {
-                scalingLogic.Begin();
             }
         }
         else
         {
-            if (grabMoveLogic != null && grabMoveLogic.IsRunning)
+            if (grabMoveLogic.IsRunning)
             {
                 grabMoveLogic.End();
-            }
-
-            if (scalingLogic != null && scalingLogic.IsRunning)
-            {
-                scalingLogic.End();
             }
         }
     }
 
     private void OnDrawGizmos()
     {
+        if (leftController == null || rightController == null) return;
+        
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(leftControllerPosition, 0.05f);
+        Gizmos.DrawWireSphere(leftController.position, 0.05f);
         
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(rightControllerPosition, 0.05f);
+        Gizmos.DrawWireSphere(rightController.position, 0.05f);
 
-        
-        if (isActive)
+        if (grabMoveLogic != null && grabMoveLogic.IsRunning)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(leftControllerPosition, rightControllerPosition);
+            Gizmos.DrawLine(leftController.position, rightController.position);
         }
     }
 }
