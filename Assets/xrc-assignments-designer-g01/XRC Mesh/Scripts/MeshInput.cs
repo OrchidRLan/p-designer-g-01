@@ -24,11 +24,17 @@ public class MeshInput : MonoBehaviour
 
     private void OnEditModePerformed(InputAction.CallbackContext ctx)
     {
-        if (meshLogic == null) return;
+        Debug.Log("[XRC Mesh] Edit action performed.");
+        if (meshLogic == null) { Debug.LogWarning("meshLogic is null"); return; }
 
-        if (meshLogic.IsInEditMode)
-            meshLogic.EndEditMode();
-        else
-            meshLogic.BeginEditMode();
+        if (meshLogic.IsInEditMode) meshLogic.EndEditMode();
+        else meshLogic.BeginEditMode();
+        
+        // if (meshLogic == null) return;
+        //
+        // if (meshLogic.IsInEditMode)
+        //     meshLogic.EndEditMode();
+        // else
+        //     meshLogic.BeginEditMode();
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.XR.Interaction.Toolkit;
+
 
 public class MeshLogic : MonoBehaviour
 {
@@ -20,9 +20,9 @@ public class MeshLogic : MonoBehaviour
     private Vector3[] _vertices;
 
     private Collider[] _colliders;
-    private XRGrabInteractable _grabInteractable;   
+    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable _grabInteractable;
     private Transform _targetTransform;
-    
+
     private struct HandleData
     {
         public Transform handleTransform;
@@ -32,15 +32,70 @@ public class MeshLogic : MonoBehaviour
 
     private readonly List<HandleData> _handles = new List<HandleData>();
 
+    
+    //------------FR2----------------------
     private void Update()
     {
         if (!_isInEditMode || _meshInstance == null) return;
-
+    
         UpdateHandlesAndMesh();
     }
-
+    private void UpdateHandlesAndMesh()
+    {
+        bool meshChanged = false;
+    
+        for (int i = 0; i < _handles.Count; i++)
+        {
+            HandleData handle = _handles[i];
+        
+            if (handle.handleTransform == null) continue;
+        
+            Vector3 currentWorldPos = handle.handleTransform.position;
+            
+            if (Vector3.Distance(currentWorldPos, handle.lastWorldPosition) > handleMoveThreshold)
+            {
+                Vector3 newLocalPos = _targetTransform.InverseTransformPoint(currentWorldPos);
+            
+        
+                foreach (int vertexIndex in handle.vertexIndices)
+                {
+                    _vertices[vertexIndex] = newLocalPos;
+                }
+                
+                handle.lastWorldPosition = currentWorldPos;
+                _handles[i] = handle;
+            
+                meshChanged = true;
+            }
+        }
+        
+        if (meshChanged)
+        {
+            _meshInstance.vertices = _vertices;
+            _meshInstance.RecalculateNormals();
+            _meshInstance.RecalculateBounds();
+            
+            UpdateColliders();
+        }
+    }
+    
+    private void UpdateColliders()
+    {
+        if (_colliders == null) return;
+    
+        foreach (var col in _colliders)
+        {
+            if (col is MeshCollider meshCol)
+            {
+                meshCol.sharedMesh = null;
+                meshCol.sharedMesh = _meshInstance;
+            }
+        }
+    }
+//----------------------
     public void BeginEditMode()
     {
+        Debug.Log("[XRC Mesh] BeginEditMode called");
         if (_isInEditMode)
             return;
 
@@ -69,8 +124,8 @@ public class MeshLogic : MonoBehaviour
         _vertices = _meshInstance.vertices;
 
         _colliders = target.GetComponents<Collider>();
-        _grabInteractable = target.GetComponent<XRGrabInteractable>();   
-        
+        _grabInteractable = target.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+
         //object shouldn't be grabbable while editing
         if (_grabInteractable != null)
             _grabInteractable.enabled = false;
@@ -133,6 +188,13 @@ public class MeshLogic : MonoBehaviour
             Vector3 worldPos = _targetTransform.TransformPoint(localPos);
 
             GameObject handle = Instantiate(handlePrefab, worldPos, Quaternion.identity);
+            //-----FR2-------
+            var grabInteractable = handle.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+            if (grabInteractable != null)
+            {
+                grabInteractable.enabled = true;
+            }
+            //------
             var data = new HandleData
             {
                 handleTransform = handle.transform,
@@ -144,8 +206,19 @@ public class MeshLogic : MonoBehaviour
         }
     }
 
+    // private void DestroyHandles()
+    // {
+    //     for (int i = 0; i < _handles.Count; i++)
+    //     {
+    //         if (_handles[i].handleTransform != null)
     private void DestroyHandles()
     {
         for (int i = 0; i < _handles.Count; i++)
         {
-            if (_handles[i].handleTransform != null)
+            if (_handles[i].handleTransform)
+                Destroy(_handles[i].handleTransform.gameObject);
+        }
+
+        _handles.Clear();
+    }
+}
