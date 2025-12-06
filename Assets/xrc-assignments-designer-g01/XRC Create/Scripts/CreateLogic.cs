@@ -242,6 +242,20 @@ namespace XRC.Toolkit.Create
             var clones = new List<IXRSelectInteractable>();
             var disabledRBs = new List<Rigidbody>();
 
+            // CRITICAL FIX: Save positions BEFORE releasing the objects
+            // This ensures we get the current position where the user is holding the object
+            var savedTransforms = new List<(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent)>();
+            
+            foreach (var o in originals)
+            {
+                var t = (o as Component).transform;
+                var parent = m_KeepParent ? t.parent : null;
+                
+                // Save the current transform state while object is still grabbed
+                savedTransforms.Add((t.position, t.rotation, t.localScale, parent));
+            }
+
+            // Now release the originals
             foreach (var o in originals)
             {
                 foreach (var interactor in o.interactorsSelecting.ToList())
@@ -251,13 +265,16 @@ namespace XRC.Toolkit.Create
                 }
             }
 
-            foreach (var o in originals)
+            // Create clones using the saved positions
+            for (int i = 0; i < originals.Count; i++)
             {
-                var t = (o as Component).transform;
-                var parent = m_KeepParent ? t.parent : null;
+                var saved = savedTransforms[i];
+                var original = originals[i];
+                var t = (original as Component).transform;
 
-                var cloneGO = Instantiate(t.gameObject, t.position, t.rotation, parent);
-                cloneGO.transform.localScale = t.localScale;
+                // Use saved position and rotation
+                var cloneGO = Instantiate(t.gameObject, saved.position, saved.rotation, saved.parent);
+                cloneGO.transform.localScale = saved.scale;
 
                 if (m_NameWithCopySuffix)
                     cloneGO.name = t.gameObject.name + "_copy";
