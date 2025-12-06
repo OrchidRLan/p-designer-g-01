@@ -520,6 +520,8 @@ MonoBehaviour:
   m_LocalPositionOffset: {x: 0.1, y: 0, z: -0.05}
   m_LocalRotationOffset: {x: 45, y: 0, z: 0}
   m_LocalScale: {x: 0.0005, y: 0.0005, z: 0.0005}
+  m_ScaleCompensation: {fileID: 0}
+  m_AutoFindScaleCompensation: 1
 --- !u!114 &452133962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,9 +1115,9 @@ MonoBehaviour:
   m_MaxScale: 2
   m_ObjectMaterial: {fileID: 2100000, guid: 24b2466c54aab4d61a66097343d43a65, type: 2}
   m_PreviewMaterial: {fileID: 2100000, guid: 2b7c59a4224e84825ac570dc4e369f94, type: 2}
-  m_Origin: {fileID: 0}
+  m_Origin: {fileID: 859846613}
   m_Interactor: {fileID: 0}
-  m_LeftTransform: {fileID: 0}
+  m_LeftTransform: {fileID: 1161849794}
   m_RightTransform: {fileID: 0}
   m_KeepParent: 1
   m_NameWithCopySuffix: 1

@@ -46,10 +46,24 @@ namespace XRC.Toolkit.Create
         [SerializeField]
         private bool m_NameWithCopySuffix = true;
 
+        [Header("Scale Compensation")]
+        [Tooltip("ScaleCompensation component to register created objects with (optional)")]
+        [SerializeField]
+        private ScaleCompensation m_ScaleCompensation;
+
+        [Tooltip("Auto-find ScaleCompensation if not assigned")]
+        [SerializeField]
+        private bool m_AutoFindScaleCompensation = true;
+
+        [Tooltip("Register created objects with ScaleCompensation so they scale with player")]
+        [SerializeField]
+        private bool m_RegisterCreatedObjects = true;
+
         private GameObject m_PreviewObject;
         private bool m_IsPreviewActive;
         private bool m_UseUniformScaling = true;
         private XRInteractionManager m_InteractionManager;
+        private HashSet<GameObject> m_RegisteredObjects = new HashSet<GameObject>();
 
         public PrimitiveType primitiveType
         {
@@ -91,6 +105,21 @@ namespace XRC.Toolkit.Create
             if (m_InteractionManager == null)
             {
                 m_InteractionManager = FindObjectOfType<XRInteractionManager>();
+            }
+
+            // Auto-find ScaleCompensation if needed
+            if (m_AutoFindScaleCompensation && m_ScaleCompensation == null)
+            {
+                m_ScaleCompensation = FindObjectOfType<ScaleCompensation>();
+                
+                if (m_ScaleCompensation != null)
+                {
+                    Debug.Log("[CreateLogic] Found ScaleCompensation component");
+                }
+                else if (m_RegisterCreatedObjects)
+                {
+                    Debug.LogWarning("[CreateLogic] ScaleCompensation not found - created objects will not auto-scale with player");
+                }
             }
         }
 
@@ -193,6 +222,9 @@ namespace XRC.Toolkit.Create
                 rb.isKinematic = true;
             }
 
+            // Register with ScaleCompensation
+            RegisterObjectWithScaleCompensation(finalObject);
+
             m_PreviewObject.SetActive(false);
             m_IsPreviewActive = false;
 
@@ -226,6 +258,49 @@ namespace XRC.Toolkit.Create
             }
 
             m_PreviewObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Registers a created object with ScaleCompensation so it scales with the player.
+        /// </summary>
+        private void RegisterObjectWithScaleCompensation(GameObject obj)
+        {
+            if (!m_RegisterCreatedObjects || m_ScaleCompensation == null || obj == null)
+                return;
+
+            // Check if already registered
+            if (m_RegisteredObjects.Contains(obj))
+                return;
+
+            // Save base scale
+            Vector3 baseScale = obj.transform.localScale;
+
+            // Register with ScaleCompensation as a 3D transform
+            m_ScaleCompensation.AddCompensatedObject(
+                obj.transform,
+                ScaleCompensation.ObjectType.Transform3D,
+                baseScale
+            );
+
+            m_RegisteredObjects.Add(obj);
+            
+            Debug.Log($"[CreateLogic] Registered {obj.name} with ScaleCompensation (base scale: {baseScale})");
+        }
+
+        /// <summary>
+        /// Unregisters an object from ScaleCompensation.
+        /// </summary>
+        private void UnregisterObjectFromScaleCompensation(GameObject obj)
+        {
+            if (m_ScaleCompensation == null || obj == null)
+                return;
+
+            if (m_RegisteredObjects.Contains(obj))
+            {
+                m_ScaleCompensation.RemoveCompensatedObject(obj.transform);
+                m_RegisteredObjects.Remove(obj);
+                Debug.Log($"[CreateLogic] Unregistered {obj.name} from ScaleCompensation");
+            }
         }
 
         public void DuplicateSelected()
@@ -292,6 +367,9 @@ namespace XRC.Toolkit.Create
                 grabInteractable.matchAttachRotation = true;
                 grabInteractable.snapToColliderVolume = false;
 
+                // Register duplicated object with ScaleCompensation
+                RegisterObjectWithScaleCompensation(cloneGO);
+
                 foreach (var rb in cloneGO.GetComponentsInChildren<Rigidbody>(true))
                 {
                     if (rb && rb.detectCollisions)
@@ -338,7 +416,11 @@ namespace XRC.Toolkit.Create
 
                 var go = (sel as Component)?.gameObject;
                 if (go)
+                {
+                    // Unregister from ScaleCompensation before destroying
+                    UnregisterObjectFromScaleCompensation(go);
                     Destroy(go);
+                }
             }
         }
 
@@ -370,6 +452,37 @@ namespace XRC.Toolkit.Create
             }
 
             return set.ToList();
+        }
+
+        // ==================== PUBLIC SCALE COMPENSATION METHODS ====================
+
+        /// <summary>
+        /// Manually set the ScaleCompensation component.
+        /// </summary>
+        public void SetScaleCompensation(ScaleCompensation scaleComp)
+        {
+            m_ScaleCompensation = scaleComp;
+            Debug.Log($"[CreateLogic] ScaleCompensation manually set");
+        }
+
+        /// <summary>
+        /// Get the current compensation factor from ScaleCompensation.
+        /// </summary>
+        public float GetCompensationFactor()
+        {
+            if (m_ScaleCompensation != null)
+            {
+                return m_ScaleCompensation.GetCompensationFactor();
+            }
+            return 1f;
+        }
+
+        /// <summary>
+        /// Enable or disable registration of created objects with ScaleCompensation.
+        /// </summary>
+        public void SetRegisterCreatedObjects(bool register)
+        {
+            m_RegisterCreatedObjects = register;
         }
     }
 }
