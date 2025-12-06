@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bc37b0e1eb0fc48a993410afb3bb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SphereSelectLogic
-  interactor: {fileID: 0}
+  interactor: {fileID: 1274023428}
   minRadius: 0.01
   maxRadius: 0.3
   defaultRadius: 0.04
