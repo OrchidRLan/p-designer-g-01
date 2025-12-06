@@ -1877,8 +1877,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7bd19fffdcb4ef0b96b6afe477f51b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScaleCompensation
-  playerTransform: {fileID: 0}
-  objectsToCompensate: []
+  playerTransform: {fileID: 859846613}
+  objectsToCompensate:
+  - target: {fileID: 1856821919}
+    type: 0
+    baseScale: {x: 0, y: 0, z: 0}
+    baseCanvasScale: 0
+    canvas: {fileID: 0}
+    lineRenderer: {fileID: 0}
+    isInitialized: 0
+  - target: {fileID: 832721757}
+    type: 0
+    baseScale: {x: 0, y: 0, z: 0}
+    baseCanvasScale: 0
+    canvas: {fileID: 0}
+    lineRenderer: {fileID: 0}
+    isInitialized: 0
+  - target: {fileID: 2132472169}
+    type: 0
+    baseScale: {x: 0, y: 0, z: 0}
+    baseCanvasScale: 0
+    canvas: {fileID: 0}
+    lineRenderer: {fileID: 0}
+    isInitialized: 0
   initialPlayerScale: 1
 --- !u!114 &1408094523
 MonoBehaviour:
@@ -1892,9 +1913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71e6f64397b47e38f9d80beb7ee6cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrabMoveLogic
-  player: {fileID: 0}
-  leftTransform: {fileID: 0}
-  rightTransform: {fileID: 0}
+  player: {fileID: 859846613}
+  leftTransform: {fileID: 1161849794}
+  rightTransform: {fileID: 1274023427}
   attachedObjects: []
   enableTranslation: 1
   enableRotation: 1
@@ -2568,6 +2589,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+--- !u!4 &1856821919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6884229230216068927, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+  m_PrefabInstance: {fileID: 1856821918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1888847066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3291,6 +3317,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 2933844788592285100, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3041204204109615145, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -3479,6 +3509,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497402f558e3205438e9fbd6e2fec036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XRC.Projects.Designer.SceneLoader.SceneLoaderLogic
+--- !u!224 &2132472169 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4816415616623455415, guid: 8c35fc70805b9c2498e672a71bc6bf04, type: 3}
+  m_PrefabInstance: {fileID: 2132472167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
