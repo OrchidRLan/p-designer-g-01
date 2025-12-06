@@ -1129,6 +1129,97 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &921858422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 921858426}
+  - component: {fileID: 921858425}
+  - component: {fileID: 921858424}
+  - component: {fileID: 921858423}
+  m_Layer: 0
+  m_Name: XRC Sphere Select
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &921858423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921858422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ffd113ed4d20e43b3db4624f7f3a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectFeedback
+  sphereMaterial: {fileID: 2100000, guid: e9124e8fd249c9340ae86d1cddd590ea, type: 2}
+  color: {r: 0.5, g: 0.5, b: 0.5, a: 0.3}
+  hoverColor: {r: 1, g: 0, b: 0, a: 0.5}
+--- !u!114 &921858424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921858422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88bc37b0e1eb0fc48a993410afb3bb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectLogic
+  interactor: {fileID: 0}
+  minRadius: 0.01
+  maxRadius: 0.3
+  defaultRadius: 0.04
+  defaultCenter: {fileID: 0}
+--- !u!114 &921858425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921858422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f18466ebf538449bd5fe848a7e347a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SphereSelectInput
+  inputSensitivity: 0.5
+  changeRadius:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Change Radius
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c372529a-5269-401a-83df-60c94aee9670
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -1855038590553741606, guid: 971e18a7470d71048b8bfb544f6e27b9, type: 3}
+--- !u!4 &921858426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921858422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &975446115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1897,7 @@ MonoBehaviour:
   rightTransform: {fileID: 1274023427}
   attachedObjects:
   - {fileID: 2133401264}
+  - {fileID: 1691434828}
   enableTranslation: 1
   enableRotation: 1
   RestrictRotationToYaw: 0
@@ -2102,6 +2194,11 @@ GameObject:
 --- !u!223 &1691434822 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 4253449700561329517, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
+  m_PrefabInstance: {fileID: 1888847066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1691434828 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1350443835820125539, guid: 2fbdbde62366b4c4ba4f0d63bd024bc3, type: 3}
   m_PrefabInstance: {fileID: 1888847066}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1757717452
@@ -3087,6 +3184,7 @@ SceneRoots:
   - {fileID: 896439395}
   - {fileID: 1303766947}
   - {fileID: 362707492}
+  - {fileID: 921858426}
   - {fileID: 1888847066}
   - {fileID: 832721757}
   - {fileID: 452133963}
