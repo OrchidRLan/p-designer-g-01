@@ -318,6 +318,9 @@ MonoBehaviour:
   m_RightTransform: {fileID: 0}
   m_KeepParent: 1
   m_NameWithCopySuffix: 1
+  m_ScaleCompensation: {fileID: 0}
+  m_AutoFindScaleCompensation: 1
+  m_RegisterCreatedObjects: 1
 --- !u!4 &564329863
 Transform:
   m_ObjectHideFlags: 0
@@ -368,7 +371,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -9041654620200389549, guid: 9fb01d9cf77b23449bccd7f4794144d4, type: 3}
+    m_Reference: {fileID: -594516019769167617, guid: 990cb7f6e81794608a70f6143a6cfe02, type: 3}
   deleteAction:
     m_UseReference: 1
     m_Action:
@@ -380,7 +383,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -2413964573271836892, guid: 9fb01d9cf77b23449bccd7f4794144d4, type: 3}
+    m_Reference: {fileID: -6410764069652630609, guid: 990cb7f6e81794608a70f6143a6cfe02, type: 3}
 --- !u!114 &564329866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,6 +656,9 @@ MonoBehaviour:
   m_RightTransform: {fileID: 0}
   m_KeepParent: 1
   m_NameWithCopySuffix: 1
+  m_ScaleCompensation: {fileID: 0}
+  m_AutoFindScaleCompensation: 1
+  m_RegisterCreatedObjects: 1
 --- !u!4 &938107835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8514629115984528261, guid: 9854c6854e2c66f44a31102914428393, type: 3}
@@ -1286,6 +1292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuToggleInput
   toggleAction: {fileID: -1439176147444714849, guid: b816d76f65fc5dc4c9243d44525ac381, type: 3}
   menuUI: {fileID: 2104239194}
+  menuIcon: {fileID: 0}
+  handInteractor: {fileID: 0}
 --- !u!4 &1172623774
 Transform:
   m_ObjectHideFlags: 0
@@ -1318,6 +1326,8 @@ MonoBehaviour:
   m_LocalPositionOffset: {x: 0.1, y: 0, z: -0.05}
   m_LocalRotationOffset: {x: 45, y: 0, z: 0}
   m_LocalScale: {x: 0.0005, y: 0.0005, z: 0.0005}
+  m_ScaleCompensation: {fileID: 0}
+  m_AutoFindScaleCompensation: 1
 --- !u!1001 &1353694374
 PrefabInstance:
   m_ObjectHideFlags: 0
