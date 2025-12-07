@@ -46,10 +46,25 @@ namespace XRC.Toolkit.Create
         [SerializeField]
         private bool m_NameWithCopySuffix = true;
 
+        [Header("Scale Compensation")]
+        [Tooltip("ScaleCompensation component to register created objects with (optional)")]
+        [SerializeField]
+        private ScaleCompensation m_ScaleCompensation;
+
+        [Tooltip("Auto-find ScaleCompensation if not assigned")]
+        [SerializeField]
+        private bool m_AutoFindScaleCompensation = true;
+
+        [Tooltip("Register created objects with ScaleCompensation so they scale with player")]
+        [SerializeField]
+        private bool m_RegisterCreatedObjects = true;
+
         private GameObject m_PreviewObject;
         private bool m_IsPreviewActive;
         private bool m_UseUniformScaling = true;
+        private int m_GrabCount = 0;
         private XRInteractionManager m_InteractionManager;
+        private HashSet<GameObject> m_RegisteredObjects = new HashSet<GameObject>();
 
         public PrimitiveType primitiveType
         {
@@ -91,6 +106,21 @@ namespace XRC.Toolkit.Create
             if (m_InteractionManager == null)
             {
                 m_InteractionManager = FindObjectOfType<XRInteractionManager>();
+            }
+
+            // Auto-find ScaleCompensation if needed
+            if (m_AutoFindScaleCompensation && m_ScaleCompensation == null)
+            {
+                m_ScaleCompensation = FindObjectOfType<ScaleCompensation>();
+                
+                if (m_ScaleCompensation != null)
+                {
+                    Debug.Log("[CreateLogic] Found ScaleCompensation component");
+                }
+                else if (m_RegisterCreatedObjects)
+                {
+                    Debug.LogWarning("[CreateLogic] ScaleCompensation not found - created objects will not auto-scale with player");
+                }
             }
         }
 
@@ -163,8 +193,33 @@ namespace XRC.Toolkit.Create
                     renderer.material = m_ObjectMaterial;
             }
 
-            if (!finalObject.GetComponent<XRGrabInteractable>())
-                finalObject.AddComponent<XRGrabInteractable>();
+            // Add and configure XRGrabInteractable
+            var grabInteractable = finalObject.GetComponent<XRGrabInteractable>();
+            if (grabInteractable == null)
+            {
+                grabInteractable = finalObject.AddComponent<XRGrabInteractable>();
+            }
+
+            // Configure grab behavior to use grab point instead of object center
+            // This prevents large objects from blocking the controller
+            grabInteractable.movementType = XRBaseInteractable.MovementType.Instantaneous;
+            grabInteractable.trackPosition = true;
+            grabInteractable.trackRotation = true;
+            grabInteractable.throwOnDetach = false;
+            
+            // KEY FIX: Use dynamic attach - grabs at the point where hand touches object
+            grabInteractable.useDynamicAttach = true;
+            grabInteractable.matchAttachPosition = true;
+            grabInteractable.matchAttachRotation = true;
+            grabInteractable.snapToColliderVolume = false;
+            
+            // Smooth grab animation
+            grabInteractable.attachEaseInTime = 0.1f;
+
+            if (finalObject.GetComponent<MeshWidget>() == null)
+            {
+                finalObject.AddComponent<MeshWidget>();
+            }
 
             var rb = finalObject.GetComponent<Rigidbody>();
             if (rb != null)
@@ -173,8 +228,13 @@ namespace XRC.Toolkit.Create
                 rb.isKinematic = true;
             }
 
+            // Register with ScaleCompensation
+            RegisterObjectWithScaleCompensation(finalObject);
+
             m_PreviewObject.SetActive(false);
             m_IsPreviewActive = false;
+
+            Debug.Log($"[CreateLogic] Created {m_PrimitiveType} with dynamic attach enabled");
 
             return finalObject;
         }
@@ -206,6 +266,49 @@ namespace XRC.Toolkit.Create
             m_PreviewObject.SetActive(false);
         }
 
+        /// <summary>
+        /// Registers a created object with ScaleCompensation so it scales with the player.
+        /// </summary>
+        private void RegisterObjectWithScaleCompensation(GameObject obj)
+        {
+            if (!m_RegisterCreatedObjects || m_ScaleCompensation == null || obj == null)
+                return;
+
+            // Check if already registered
+            if (m_RegisteredObjects.Contains(obj))
+                return;
+
+            // Save base scale
+            Vector3 baseScale = obj.transform.localScale;
+
+            // Register with ScaleCompensation as a 3D transform
+            m_ScaleCompensation.AddCompensatedObject(
+                obj.transform,
+                ScaleCompensation.ObjectType.Transform3D,
+                baseScale
+            );
+
+            m_RegisteredObjects.Add(obj);
+            
+            Debug.Log($"[CreateLogic] Registered {obj.name} with ScaleCompensation (base scale: {baseScale})");
+        }
+
+        /// <summary>
+        /// Unregisters an object from ScaleCompensation.
+        /// </summary>
+        private void UnregisterObjectFromScaleCompensation(GameObject obj)
+        {
+            if (m_ScaleCompensation == null || obj == null)
+                return;
+
+            if (m_RegisteredObjects.Contains(obj))
+            {
+                m_ScaleCompensation.RemoveCompensatedObject(obj.transform);
+                m_RegisteredObjects.Remove(obj);
+                Debug.Log($"[CreateLogic] Unregistered {obj.name} from ScaleCompensation");
+            }
+        }
+
         public void DuplicateSelected()
         {
             var originals = GatherSelected();
@@ -217,32 +320,59 @@ namespace XRC.Toolkit.Create
 
         private IEnumerator DuplicateRoutine(List<IXRSelectInteractable> originals)
         {
-            var clones = new List<IXRSelectInteractable>();
             var disabledRBs = new List<Rigidbody>();
 
-            foreach (var o in originals)
-            {
-                foreach (var interactor in o.interactorsSelecting.ToList())
-                {
-                    if (m_InteractionManager != null)
-                        m_InteractionManager.SelectExit(interactor, o);
-                }
-            }
-
+            // CRITICAL FIX: Save positions BEFORE releasing the objects
+            // This ensures we get the current position where the user is holding the object
+            var savedTransforms = new List<(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent)>();
             foreach (var o in originals)
             {
                 var t = (o as Component).transform;
                 var parent = m_KeepParent ? t.parent : null;
+                
+                // Save the current transform state while object is still grabbed
+                savedTransforms.Add((t.position, t.rotation, t.localScale, parent));
+            }
 
-                var cloneGO = Instantiate(t.gameObject, t.position, t.rotation, parent);
-                cloneGO.transform.localScale = t.localScale;
+            for (int i = 0; i < originals.Count; i++)
+            {
+                var saved = savedTransforms[i];
+                var original = originals[i];
+                var t = (original as Component).transform;
+
+                // Use saved position and rotation
+                var cloneGO = Instantiate(t.gameObject, saved.position, saved.rotation, saved.parent);
+                cloneGO.transform.localScale = saved.scale;
 
                 if (m_NameWithCopySuffix)
                     cloneGO.name = t.gameObject.name + "_copy";
 
-                if (!cloneGO.GetComponent<XRGrabInteractable>())
-                    cloneGO.AddComponent<XRGrabInteractable>();
+                // Configure duplicated object with same grab settings
+                var grabInteractable = cloneGO.GetComponent<XRGrabInteractable>();
+                if (grabInteractable == null)
+                {
+                    grabInteractable = cloneGO.AddComponent<XRGrabInteractable>();
+                }
+                
+                // Apply same settings as newly created objects
+                grabInteractable.useDynamicAttach = true;
+                grabInteractable.matchAttachPosition = true;
+                grabInteractable.matchAttachRotation = true;
+                grabInteractable.snapToColliderVolume = false;
 
+                if (cloneGO.GetComponent<MeshWidget>() == null)
+                {
+                    cloneGO.AddComponent<MeshWidget>();
+                }
+                // Register duplicated object with ScaleCompensation
+                RegisterObjectWithScaleCompensation(cloneGO);
+
+                var allColliders = cloneGO.GetComponentsInChildren<Collider>();
+                foreach (var col in allColliders)
+                {
+                    col.enabled = false;
+                }
+                grabInteractable.enabled = false;
                 foreach (var rb in cloneGO.GetComponentsInChildren<Rigidbody>(true))
                 {
                     if (rb && rb.detectCollisions)
@@ -251,10 +381,6 @@ namespace XRC.Toolkit.Create
                         disabledRBs.Add(rb);
                     }
                 }
-
-                var interactable = cloneGO.GetComponent<IXRSelectInteractable>();
-                if (interactable != null)
-                    clones.Add(interactable);
             }
 
             yield return null;
@@ -262,12 +388,6 @@ namespace XRC.Toolkit.Create
             foreach (var rb in disabledRBs)
             {
                 if (rb) rb.detectCollisions = true;
-            }
-
-            if (m_Interactor != null && m_InteractionManager != null)
-            {
-                foreach (var c in clones)
-                    m_InteractionManager.SelectEnter(m_Interactor, c);
             }
         }
 
@@ -289,7 +409,11 @@ namespace XRC.Toolkit.Create
 
                 var go = (sel as Component)?.gameObject;
                 if (go)
+                {
+                    // Unregister from ScaleCompensation before destroying
+                    UnregisterObjectFromScaleCompensation(go);
                     Destroy(go);
+                }
             }
         }
 
@@ -321,6 +445,37 @@ namespace XRC.Toolkit.Create
             }
 
             return set.ToList();
+        }
+
+        // ==================== PUBLIC SCALE COMPENSATION METHODS ====================
+
+        /// <summary>
+        /// Manually set the ScaleCompensation component.
+        /// </summary>
+        public void SetScaleCompensation(ScaleCompensation scaleComp)
+        {
+            m_ScaleCompensation = scaleComp;
+            Debug.Log($"[CreateLogic] ScaleCompensation manually set");
+        }
+
+        /// <summary>
+        /// Get the current compensation factor from ScaleCompensation.
+        /// </summary>
+        public float GetCompensationFactor()
+        {
+            if (m_ScaleCompensation != null)
+            {
+                return m_ScaleCompensation.GetCompensationFactor();
+            }
+            return 1f;
+        }
+
+        /// <summary>
+        /// Enable or disable registration of created objects with ScaleCompensation.
+        /// </summary>
+        public void SetRegisterCreatedObjects(bool register)
+        {
+            m_RegisterCreatedObjects = register;
         }
     }
 }

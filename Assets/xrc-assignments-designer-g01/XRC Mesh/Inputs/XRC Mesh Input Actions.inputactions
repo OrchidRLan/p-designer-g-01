@@ -1,24 +1,24 @@
 {
     "version": 1,
-    "name": "XRC Create Input Actionsdd",
+    "name": "XRC Mesh Input Actions",
     "maps": [
         {
-            "name": "Duplicate",
-            "id": "3c0bb45c-81d0-4c30-bc98-a46d0c27c47b",
+            "name": "Mesh",
+            "id": "aef28cc8-d378-45ad-a8cf-2dc4dc60133d",
             "actions": [
                 {
-                    "name": "Duplicate",
+                    "name": "enterEditMode",
                     "type": "Button",
-                    "id": "a458a34e-9460-43bb-84ba-1263856fe450",
+                    "id": "a5708e34-e057-4226-97a8-d7671b4d5728",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Delete",
+                    "name": "exitEditMode",
                     "type": "Button",
-                    "id": "45d872c0-2dc6-4701-84d3-a56952c07f15",
+                    "id": "13256de7-6a6d-4585-abed-06fb75b7a3e4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -28,23 +28,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "1dba7b3d-f28f-4a6a-866f-b6787998682e",
-                    "path": "<XRController>{RightHand}/{TriggerButton}",
-                    "interactions": "Press",
+                    "id": "76d42da2-06c2-4381-b6f9-a1c492a21278",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Duplicate",
+                    "action": "enterEditMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "208c589a-16c8-4a5e-b502-986fab6df8b8",
-                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "id": "6fab0ea8-1453-45f6-be7a-9670e6de864a",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Delete",
+                    "action": "exitEditMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

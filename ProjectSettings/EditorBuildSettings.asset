@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
   - enabled: 1
+    path: Assets/xrc-assignments-designer-g01/XRC Mesh/Scenes/XRC Mesh.unity
+    guid: f1412e8212fefd340bc369d56fd4db39
+  - enabled: 1
     path: Assets/xrc-assignments-designer-g01/Designer/Scenes/Designer.unity
     guid: 3c6b64406e980de49886e2a3771f9cff
   - enabled: 1
@@ -21,9 +24,6 @@ EditorBuildSettings:
     path: Assets/xrc-assignments-designer-g01/XRC Sphere Select/Scenes/XRC Sphere
       Select.unity
     guid: 9b65a08b6da3356409e04e0b991ce9f4
-  - enabled: 1
-    path: Assets/xrc-assignments-designer-g01/XRC Mesh/Scenes/XRC Mesh.unity
-    guid: f1412e8212fefd340bc369d56fd4db39
   - enabled: 1
     path: Assets/xrc-assignments-designer-g01/XRC Color/Scenes/XRC Color.unity
     guid: bf0df96dc3314ec4fabf39dddd2048d9

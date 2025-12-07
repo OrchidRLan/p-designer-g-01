@@ -8,17 +8,21 @@ public class GrabMoveFeedback : MonoBehaviour
     [SerializeField] private GameObject linePrefab;
     [SerializeField] private GameObject textPrefab;
     
+    [Header("Scale Compensation")]
+    [SerializeField] private ScaleCompensation scaleCompensation;
+    
     private GameObject pivotInstance;
     private GameObject lineInstance;
     private GameObject textInstance;
     
     private LineRenderer lineRenderer;
-    private TMPro.TextMeshPro textComponent;
+    private TextMeshPro textComponent;
     
-    private const float TEXT_OFFSET_Y = 0.06f;
-    private const float FIXED_PIVOT_SIZE = 0.02f;
-    private const float FIXED_TEXT_SCALE = 0.01f;
-    private const float FIXED_LINE_WIDTH = 0.02f;
+    [Header("Settings")]
+    [SerializeField] private float textOffsetY = 0.05f;
+    [SerializeField] private float fixedPivotSize = 0.02f;
+    [SerializeField] private float fixedTextScale = 0.01f;
+    [SerializeField] private float fixedLineWidth = 0.02f;
     
     private bool isInitialized = false;
     
@@ -31,6 +35,13 @@ public class GrabMoveFeedback : MonoBehaviour
         
         if (pivotPrefab == null || linePrefab == null || textPrefab == null)
         {
+            Debug.LogError("GrabMoveFeedback: Prefabs not assigned!");
+            return;
+        }
+        
+        if (scaleCompensation == null)
+        {
+            Debug.LogError("GrabMoveFeedback: ScaleCompensation not assigned!");
             return;
         }
         
@@ -38,22 +49,44 @@ public class GrabMoveFeedback : MonoBehaviour
         lineInstance = Instantiate(linePrefab);
         textInstance = Instantiate(textPrefab);
         
-        pivotInstance.transform.SetParent(null);
-        lineInstance.transform.SetParent(null);
-        textInstance.transform.SetParent(null);
-        
-        pivotInstance.transform.localScale = Vector3.one * FIXED_PIVOT_SIZE;
-        textInstance.transform.localScale = Vector3.one * FIXED_TEXT_SCALE;
+        pivotInstance.transform.localScale = Vector3.one * fixedPivotSize;
+        textInstance.transform.localScale = Vector3.one * fixedTextScale;
         
         lineRenderer = lineInstance.GetComponent<LineRenderer>();
         if (lineRenderer != null)
         {
             lineRenderer.useWorldSpace = true;
-            lineRenderer.widthMultiplier = FIXED_LINE_WIDTH;
+            lineRenderer.widthMultiplier = fixedLineWidth;
+        }
+        else
+        {
+            Debug.LogError("GrabMoveFeedback: LineRenderer not found on Line prefab!");
         }
         
-        textComponent = textInstance.GetComponentInChildren<TMPro.TextMeshPro>();
+        textComponent = textInstance.GetComponentInChildren<TextMeshPro>();
+        if (textComponent == null)
+        {
+            Debug.LogError("GrabMoveFeedback: TextMeshPro not found on Text prefab!");
+        }
 
+        scaleCompensation.AddCompensatedObject(
+            pivotInstance.transform, 
+            ScaleCompensation.ObjectType.Transform3D, 
+            pivotInstance.transform.localScale
+        );
+        
+        scaleCompensation.AddCompensatedObject(
+            textInstance.transform, 
+            ScaleCompensation.ObjectType.Transform3D, 
+            textInstance.transform.localScale
+        );
+        
+        scaleCompensation.AddCompensatedObject(
+            lineInstance.transform, 
+            ScaleCompensation.ObjectType.LineRenderer, 
+            new Vector3(fixedLineWidth, 0, 0)
+        );
+        
         pivotInstance.SetActive(false);
         lineInstance.SetActive(false);
         textInstance.SetActive(false);
@@ -66,6 +99,7 @@ public class GrabMoveFeedback : MonoBehaviour
         if (pivotInstance != null)
         {
             pivotInstance.transform.position = pivotPosition;
+            // 缩放补偿由ScaleCompensation系统自动处理
         }
     }
 
@@ -78,27 +112,25 @@ public class GrabMoveFeedback : MonoBehaviour
         }
     }
 
-    public void UpdateScaleText(float worldScalePercent)
+    public void UpdateScaleText(float worldScalePercent, Vector3 pivotPos)
     {
-        if (textInstance == null || textComponent == null || lineRenderer == null)
+        if (textInstance == null || textComponent == null || scaleCompensation == null)
             return;
-    
+        
         textComponent.text = worldScalePercent.ToString("F0") + "%";
-    
-        Vector3 leftPos = lineRenderer.GetPosition(0);
-        Vector3 rightPos = lineRenderer.GetPosition(1);
-    
-        Vector3 midpoint = (leftPos + rightPos) * 0.5f;
-    
-        textInstance.transform.position = midpoint + Vector3.up * TEXT_OFFSET_Y;
+        
+        float compensationFactor = scaleCompensation.GetCompensationFactor();
+        float adjustedOffset = textOffsetY * compensationFactor;
+
+        textInstance.transform.position = pivotPos + Vector3.up * adjustedOffset;
         
         var cam = Camera.main;
         if (cam != null)
         {
-            textInstance.transform.forward = cam.transform.forward;
+            textInstance.transform.LookAt(cam.transform);
+            textInstance.transform.Rotate(0, 180, 0);
         }
     }
-
     
     public void SetFeedbackActive(bool isActive)
     {
@@ -119,6 +151,16 @@ public class GrabMoveFeedback : MonoBehaviour
     
     private void OnDestroy()
     {
+        if (scaleCompensation != null)
+        {
+            if (pivotInstance != null)
+                scaleCompensation.RemoveCompensatedObject(pivotInstance.transform);
+            if (lineInstance != null)
+                scaleCompensation.RemoveCompensatedObject(lineInstance.transform);
+            if (textInstance != null)
+                scaleCompensation.RemoveCompensatedObject(textInstance.transform);
+        }
+        
         if (pivotInstance != null) Destroy(pivotInstance);
         if (lineInstance != null) Destroy(lineInstance);
         if (textInstance != null) Destroy(textInstance);
