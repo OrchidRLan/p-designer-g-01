@@ -2728,6 +2728,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 3.4
       objectReference: {fileID: 0}
+    - target: {fileID: 4426073243322123003, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295465283934045603, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5388204446054668745, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_SizeDelta.x
       value: 112.53
@@ -2740,9 +2748,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 5477478325710526391, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5720533858140965198, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720533858140965198, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6133106635792687667, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2804,6 +2820,10 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 6449242316264058592, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6884229230216068927, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2844,6 +2864,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7565816606472425881, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7967665976385657929, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_SizeDelta.x
       value: 112.53
@@ -2855,6 +2879,14 @@ PrefabInstance:
     - target: {fileID: 8115936220161504158, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
       propertyPath: m_Name
       value: Text Front
+      objectReference: {fileID: 0}
+    - target: {fileID: 8115936220161504158, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795030395856190446, guid: f6b6b5d8b25c75a49bc7e6352f643b12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
