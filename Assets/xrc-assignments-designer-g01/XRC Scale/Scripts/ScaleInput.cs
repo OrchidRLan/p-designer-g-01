@@ -13,7 +13,8 @@ public class ScaleInput : MonoBehaviour
 
     [SerializeField]
     private InputActionProperty exitEditModeInput;
-
+    [SerializeField]
+    private MeshLogic meshLogic;
     public UnityEvent OnEditAvailable;
     public UnityEvent OnEditUnavailable;
     public UnityEvent OnEditModeEntered;
@@ -143,7 +144,10 @@ public class ScaleInput : MonoBehaviour
                 return; 
             }
         }
-
+        if (meshLogic != null && meshLogic.IsInEditMode)
+        {
+            return;
+        }
         isHolding = true;
 
         if (args.interactableObject != null)
@@ -176,6 +180,10 @@ public class ScaleInput : MonoBehaviour
             {
                 return;
             }
+        }
+        if (meshLogic != null && meshLogic.IsInEditMode)
+        {
+            return;
         }
 
         isHolding = false;

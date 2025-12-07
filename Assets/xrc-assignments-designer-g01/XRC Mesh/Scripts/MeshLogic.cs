@@ -1,17 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class MeshLogic : MonoBehaviour
 {
     [SerializeField] private MeshWidget meshWidget;
     [SerializeField] private MeshFeedback feedback;
     [SerializeField] private GameObject handlePrefab;
+    [SerializeField] private GameObject conflictingTool;
 
     [SerializeField] private float vertexGroupEpsilon = 0.0001f;
     [SerializeField] private float handleMoveThreshold = 0.0001f;
 
     public bool IsInEditMode => _isInEditMode;
+    public bool HasTarget => meshWidget != null;
 
     private bool _isInEditMode;
 
@@ -20,8 +22,9 @@ public class MeshLogic : MonoBehaviour
     private Vector3[] _vertices;
 
     private Collider[] _colliders;
-    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable _grabInteractable;
+    private XRGrabInteractable _grabInteractable;
     private Transform _targetTransform;
+    private bool _wasGrabEnabled;
 
     private struct HandleData
     {
@@ -32,7 +35,31 @@ public class MeshLogic : MonoBehaviour
 
     private readonly List<HandleData> _handles = new List<HandleData>();
 
-    
+    public void OnEditObjectChanging(GameObject newObject)
+    {
+        if (meshWidget != null && newObject == meshWidget.gameObject)
+        {
+            return;
+        }
+
+        if (_isInEditMode)
+        {
+            EndEditMode();
+        }
+
+        if (newObject == null)
+        {
+            meshWidget = null;
+            return;
+        }
+
+        var widget = newObject.GetComponent<MeshWidget>();
+        if (widget != null)
+        {
+            meshWidget = widget;
+        }
+    }
+
     //------------FR2----------------------
     private void Update()
     {
@@ -124,11 +151,27 @@ public class MeshLogic : MonoBehaviour
         _vertices = _meshInstance.vertices;
 
         _colliders = target.GetComponents<Collider>();
-        _grabInteractable = target.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        _grabInteractable = target.GetComponent<XRGrabInteractable>();
 
         //object shouldn't be grabbable while editing
         if (_grabInteractable != null)
+        {
+            _wasGrabEnabled = _grabInteractable.enabled;
             _grabInteractable.enabled = false;
+        }
+
+        if (_colliders != null)
+        {
+            foreach (var col in _colliders)
+            {
+                col.enabled = false;
+            }
+        }
+
+        if (conflictingTool != null)
+        {
+            conflictingTool.SetActive(false);
+        }
 
         CreateHandles();
 
@@ -143,7 +186,20 @@ public class MeshLogic : MonoBehaviour
         DestroyHandles();
 
         if (_grabInteractable != null)
-            _grabInteractable.enabled = true;
+            _grabInteractable.enabled = _wasGrabEnabled;
+
+        if (_colliders != null)
+        {
+            foreach (var col in _colliders)
+            {
+                if (col != null) col.enabled = true;
+            }
+        }
+
+        if (conflictingTool != null)
+        {
+            conflictingTool.SetActive(true);
+        }
 
         _isInEditMode = false;
     }
@@ -189,7 +245,7 @@ public class MeshLogic : MonoBehaviour
 
             GameObject handle = Instantiate(handlePrefab, worldPos, Quaternion.identity);
             //-----FR2-------
-            var grabInteractable = handle.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+            var grabInteractable = handle.GetComponent<XRGrabInteractable>();
             if (grabInteractable != null)
             {
                 grabInteractable.enabled = true;
@@ -220,5 +276,22 @@ public class MeshLogic : MonoBehaviour
         }
 
         _handles.Clear();
+    }
+
+    public bool IsGrabbing
+    {
+        get
+        {
+            if (meshWidget == null)
+            {
+                return false;
+            }
+            var interactable = meshWidget.GetComponent<XRGrabInteractable>();
+            if (interactable != null)
+            {
+                return interactable.isSelected;
+            }
+            return false;
+        }
     }
 }

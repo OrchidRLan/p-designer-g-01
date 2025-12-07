@@ -103,15 +103,8 @@ public class DuplicateLogic : MonoBehaviour
     
     private IEnumerator DuplicateRoutine(List<UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable> originals)
     {
-        var clones = new List<UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable>();
         var disabledRBs = new List<Rigidbody>();
-        
-        foreach (var o in originals)
-        {
-            foreach (var interactor in o.interactorsSelecting.ToList())
-                interactionManager.SelectExit(interactor, o);
-        }
-        
+
         foreach (var o in originals)
         {
             var t = (o as Component).transform;
@@ -119,11 +112,17 @@ public class DuplicateLogic : MonoBehaviour
 
             var cloneGO = Object.Instantiate(t.gameObject, t.position, t.rotation, parent);
             cloneGO.transform.localScale = t.localScale;
-            if (nameWithCopySuffix) cloneGO.name = t.gameObject.name + "_copy";
+
+            if (nameWithCopySuffix)
+            {
+                cloneGO.name = t.gameObject.name + "_copy";
+            }
             
+
             if (!cloneGO.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>())
+            {
                 cloneGO.AddComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
-            
+            }
             foreach (var rb in cloneGO.GetComponentsInChildren<Rigidbody>(true))
             {
                 if (rb && rb.detectCollisions)
@@ -132,18 +131,12 @@ public class DuplicateLogic : MonoBehaviour
                     disabledRBs.Add(rb);
                 }
             }
-
-            clones.Add(cloneGO.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable>());
         }
-        
+
         yield return null;
-        foreach (var rb in disabledRBs) if (rb) rb.detectCollisions = true;
-        
-        var primaryInteractor = selectionInteractors.FirstOrDefault(i => i != null);
-        if (primaryInteractor != null)
+        foreach (var rb in disabledRBs)
         {
-            foreach (var c in clones)
-                interactionManager.SelectEnter(primaryInteractor, c);
+            if (rb) rb.detectCollisions = true;
         }
     }
 }

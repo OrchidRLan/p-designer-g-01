@@ -62,6 +62,7 @@ namespace XRC.Toolkit.Create
         private GameObject m_PreviewObject;
         private bool m_IsPreviewActive;
         private bool m_UseUniformScaling = true;
+        private int m_GrabCount = 0;
         private XRInteractionManager m_InteractionManager;
         private HashSet<GameObject> m_RegisteredObjects = new HashSet<GameObject>();
 
@@ -215,6 +216,11 @@ namespace XRC.Toolkit.Create
             // Smooth grab animation
             grabInteractable.attachEaseInTime = 0.1f;
 
+            if (finalObject.GetComponent<MeshWidget>() == null)
+            {
+                finalObject.AddComponent<MeshWidget>();
+            }
+
             var rb = finalObject.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -314,13 +320,11 @@ namespace XRC.Toolkit.Create
 
         private IEnumerator DuplicateRoutine(List<IXRSelectInteractable> originals)
         {
-            var clones = new List<IXRSelectInteractable>();
             var disabledRBs = new List<Rigidbody>();
 
             // CRITICAL FIX: Save positions BEFORE releasing the objects
             // This ensures we get the current position where the user is holding the object
             var savedTransforms = new List<(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent)>();
-            
             foreach (var o in originals)
             {
                 var t = (o as Component).transform;
@@ -330,17 +334,6 @@ namespace XRC.Toolkit.Create
                 savedTransforms.Add((t.position, t.rotation, t.localScale, parent));
             }
 
-            // Now release the originals
-            foreach (var o in originals)
-            {
-                foreach (var interactor in o.interactorsSelecting.ToList())
-                {
-                    if (m_InteractionManager != null)
-                        m_InteractionManager.SelectExit(interactor, o);
-                }
-            }
-
-            // Create clones using the saved positions
             for (int i = 0; i < originals.Count; i++)
             {
                 var saved = savedTransforms[i];
@@ -367,9 +360,19 @@ namespace XRC.Toolkit.Create
                 grabInteractable.matchAttachRotation = true;
                 grabInteractable.snapToColliderVolume = false;
 
+                if (cloneGO.GetComponent<MeshWidget>() == null)
+                {
+                    cloneGO.AddComponent<MeshWidget>();
+                }
                 // Register duplicated object with ScaleCompensation
                 RegisterObjectWithScaleCompensation(cloneGO);
 
+                var allColliders = cloneGO.GetComponentsInChildren<Collider>();
+                foreach (var col in allColliders)
+                {
+                    col.enabled = false;
+                }
+                grabInteractable.enabled = false;
                 foreach (var rb in cloneGO.GetComponentsInChildren<Rigidbody>(true))
                 {
                     if (rb && rb.detectCollisions)
@@ -378,10 +381,6 @@ namespace XRC.Toolkit.Create
                         disabledRBs.Add(rb);
                     }
                 }
-
-                var interactable = cloneGO.GetComponent<IXRSelectInteractable>();
-                if (interactable != null)
-                    clones.Add(interactable);
             }
 
             yield return null;
@@ -389,12 +388,6 @@ namespace XRC.Toolkit.Create
             foreach (var rb in disabledRBs)
             {
                 if (rb) rb.detectCollisions = true;
-            }
-
-            if (m_Interactor != null && m_InteractionManager != null)
-            {
-                foreach (var c in clones)
-                    m_InteractionManager.SelectEnter(m_Interactor, c);
             }
         }
 
