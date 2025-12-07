@@ -645,7 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeshIconController
   enterEditIcon: {fileID: 884404543}
   confirmIcon: {fileID: 1309197787}
-  meshLogic: {fileID: 0}
+  meshLogic: {fileID: 1331499950}
 --- !u!114 &1331499952 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -178198170709574374, guid: c8c14a077dc4e414d988f178b39bf4b9, type: 3}
