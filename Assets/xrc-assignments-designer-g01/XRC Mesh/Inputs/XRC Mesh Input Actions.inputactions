@@ -20,7 +20,7 @@
                 {
                     "name": "",
                     "id": "76d42da2-06c2-4381-b6f9-a1c492a21278",
-                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

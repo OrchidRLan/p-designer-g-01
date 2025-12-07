@@ -117,12 +117,17 @@ public class MeshLogic : MonoBehaviour
 
         _targetTransform = _meshFilter.transform;
 
+        //snap back to original pose before editing
+        if (meshWidget != null)
+        {
+            meshWidget.RestoreOriginalPose();
+        }
+
         //work on an instance so we don't wreck the shared mesh asset
         _meshInstance = Instantiate(_meshFilter.sharedMesh);
         _meshFilter.sharedMesh = _meshInstance;
 
         _vertices = _meshInstance.vertices;
-
         _colliders = target.GetComponents<Collider>();
         _grabInteractable = target.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
 
