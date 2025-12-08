@@ -326,6 +326,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
+  meshLogic: {fileID: 0}
   OnEditAvailable:
     m_PersistentCalls:
       m_Calls:
@@ -503,7 +504,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5243450106120974644, guid: bb4d4fc1d260e914bbf58e21e3a1682a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4d4fc1d260e914bbf58e21e3a1682a, type: 3}
@@ -861,7 +863,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5243450106120974644, guid: bb4d4fc1d260e914bbf58e21e3a1682a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4d4fc1d260e914bbf58e21e3a1682a, type: 3}

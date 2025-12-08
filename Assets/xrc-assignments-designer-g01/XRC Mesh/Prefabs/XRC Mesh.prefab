@@ -49,6 +49,7 @@ MonoBehaviour:
   meshWidget: {fileID: 0}
   feedback: {fileID: 0}
   handlePrefab: {fileID: 0}
+  conflictingTool: {fileID: 0}
   vertexGroupEpsilon: 0.0001
   handleMoveThreshold: 0.0001
 --- !u!114 &-178198170709574374
@@ -64,13 +65,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeshInput
   meshLogic: {fileID: 0}
-  editModeAction:
+  enterEditModeAction:
     m_UseReference: 0
     m_Action:
-      m_Name: Edit Mode
+      m_Name: Enter Edit Mode
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 9075d4e9-f992-495b-bad7-65f4eb9b8cc1
+      m_Id: 31a53e3c-c7c1-4323-b456-6b37d09be9aa
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  exitEditModeAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Exit Edit Mode
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 90616697-101b-48f3-ad4f-f0b111985a2f
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
