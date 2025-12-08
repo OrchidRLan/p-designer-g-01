@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class MeshWidget : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Vector3 _originalPosition;
+    private Quaternion _originalRotation;
+
+    private void Awake()
     {
-        
+        //store object's initial pose in the scene
+        _originalPosition = transform.position;
+        _originalRotation = transform.rotation;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RestoreOriginalPose()
     {
-        
+        transform.position = _originalPosition;
+        transform.rotation = _originalRotation;
     }
 }
+
